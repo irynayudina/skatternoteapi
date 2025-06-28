@@ -19,7 +19,9 @@ model User {
   id        Int       @id @default(autoincrement())
   username  String    @unique
   email     String    @unique
-  password  String    // Hashed password
+  password  String?   // Optional for Auth0 users
+  auth0Id   String?   @unique // Auth0 user ID
+  picture   String?   // Auth0 profile picture
   role      String    @default("user") // user, admin, etc.
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt

@@ -4,6 +4,19 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
 import * as bcrypt from 'bcryptjs';
 
+export interface CreateAuth0UserDto {
+  auth0Id: string;
+  email: string;
+  username: string;
+  picture?: string;
+}
+
+export interface UpdateAuth0UserDto {
+  email?: string;
+  username?: string;
+  picture?: string;
+}
+
 @Injectable()
 export class UserService {
   constructor(private prisma: PrismaService) {}
@@ -48,6 +61,124 @@ export class UserService {
     return user;
   }
 
+  async createAuth0User(createAuth0UserDto: CreateAuth0UserDto) {
+    const { auth0Id, email, username, picture } = createAuth0UserDto;
+
+    // Check if user already exists
+    const existingUser = await this.prisma.user.findFirst({
+      where: {
+        OR: [
+          { email },
+          { username },
+          { auth0Id }
+        ]
+      }
+    });
+
+    if (existingUser) {
+      // If user exists, update their auth0Id if they don't have one
+      if (!existingUser.auth0Id && auth0Id) {
+        return await this.prisma.user.update({
+          where: { id: existingUser.id },
+          data: { auth0Id },
+          select: {
+            id: true,
+            username: true,
+            email: true,
+            picture: true,
+            role: true,
+            createdAt: true
+          }
+        });
+      }
+      
+      // Return existing user if they already have auth0Id
+      return await this.prisma.user.findUnique({
+        where: { id: existingUser.id },
+        select: {
+          id: true,
+          username: true,
+          email: true,
+          picture: true,
+          role: true,
+          createdAt: true
+        }
+      });
+    }
+
+    // Create new Auth0 user
+    const user = await this.prisma.user.create({
+      data: {
+        auth0Id,
+        email,
+        username,
+        picture,
+        role: 'user'
+      },
+      select: {
+        id: true,
+        username: true,
+        email: true,
+        picture: true,
+        role: true,
+        createdAt: true
+      }
+    });
+
+    return user;
+  }
+
+  async updateByAuth0Id(auth0Id: string, updateData: UpdateAuth0UserDto) {
+    const user = await this.prisma.user.update({
+      where: { auth0Id },
+      data: updateData,
+      select: {
+        id: true,
+        username: true,
+        email: true,
+        picture: true,
+        role: true,
+        createdAt: true
+      }
+    });
+
+    return user;
+  }
+
+  async updateExistingUserWithAuth0Id(userId: number, auth0Id: string, updateData: UpdateAuth0UserDto) {
+    const user = await this.prisma.user.update({
+      where: { id: userId },
+      data: {
+        ...updateData,
+        auth0Id
+      },
+      select: {
+        id: true,
+        username: true,
+        email: true,
+        picture: true,
+        role: true,
+        createdAt: true
+      }
+    });
+
+    return user;
+  }
+
+  async findByAuth0Id(auth0Id: string) {
+    return await this.prisma.user.findUnique({
+      where: { auth0Id },
+      select: {
+        id: true,
+        username: true,
+        email: true,
+        picture: true,
+        role: true,
+        createdAt: true
+      }
+    });
+  }
+
   async login(loginUserDto: LoginUserDto) {
     const { email, password } = loginUserDto;
 
@@ -61,7 +192,7 @@ export class UserService {
     }
 
     // Verify password
-    const isPasswordValid = await bcrypt.compare(password, user.password);
+    const isPasswordValid = await bcrypt.compare(password, user.password || '');
     if (!isPasswordValid) {
       throw new UnauthorizedException('Invalid credentials');
     }
