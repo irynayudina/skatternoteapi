@@ -1,6 +1,8 @@
 import { Controller, Post, Body, Get, UseGuards, Request, HttpException, HttpStatus } from '@nestjs/common';
 import { AuthService, Auth0User } from './auth.service';
 import { UserService } from '../user/user.service';
+import { CreateUserWithUsernameDto } from './dto/create-user-with-username.dto';
+import { AuthGuard } from './auth.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -32,10 +34,33 @@ export class AuthController {
     }
   }
 
+  @Post('create-user-with-username')
+  async createUserWithUsername(@Body() createUserDto: CreateUserWithUsernameDto) {
+    try {
+      // Validate required fields
+      if (!createUserDto.sub || !createUserDto.email || !createUserDto.username) {
+        throw new HttpException('Missing required fields: sub, email, and username', HttpStatus.BAD_REQUEST);
+      }
+
+      return await this.authService.createUserWithCustomUsername(createUserDto);
+    } catch (error) {
+      console.error('Error in create-user-with-username endpoint:', error);
+      
+      if (error instanceof HttpException) {
+        throw error;
+      }
+      
+      throw new HttpException(
+        'Failed to create user with custom username',
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
   @Get('profile')
+  @UseGuards(AuthGuard)
   async getProfile(@Request() req) {
     try {
-      // This will be protected by Auth0 middleware
       const auth0Id = req.user?.sub;
       
       if (!auth0Id) {

@@ -247,6 +247,12 @@ export class UserService {
     });
   }
 
+  async findByUsername(username: string) {
+    return this.prisma.user.findUnique({
+      where: { username }
+    });
+  }
+
   async remove(id: number) {
     const user = await this.prisma.user.findUnique({
       where: { id }
