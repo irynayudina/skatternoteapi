@@ -8,17 +8,19 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'http://localhost:5173',
-      'https://skatternoteapi-production.up.railway.app/',
+      'https://skatternoteapi-production.up.railway.app',
       'http://localhost:3000',
       'https://scatternote.netlify.app',
     ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
   });
   
   const port = process.env.PORT ?? 3000;
-  await app.listen(port, '0.0.0.0'); // ⬅️ ADD THIS PARAMETER!
+  await app.listen(port, '0.0.0.0');
   console.log(`Application is running on: ${await app.getUrl()}`);
 }
 bootstrap();
