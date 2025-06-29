@@ -1,0 +1,97 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User model for authentication and user management
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  email     String   @unique
+  password  String? // Optional for Auth0 users
+  auth0Id   String?  @unique // Auth0 user ID
+  picture   String? // Auth0 profile picture
+  role      String   @default("user") // user, admin, etc.
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relationships
+  desktops Desktop[]
+  notes    Note[]
+
+  @@map("users")
+}
+
+// Desktop model for workspace organization
+model Desktop {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  userId      Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relationships
+  user  User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  notes Note[]
+
+  @@map("desktops")
+}
+
+// Note model for individual notes
+model Note {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  isPinned  Boolean  @default(false)
+  desktopId Int
+  userId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relationships
+  desktop Desktop   @relation(fields: [desktopId], references: [id], onDelete: Cascade)
+  user    User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tags    NoteTag[]
+
+  @@map("notes")
+}
+
+// Tag model for note categorization
+model Tag {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  color     String? // Optional color for UI customization
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relationships
+  notes NoteTag[]
+
+  @@map("tags")
+}
+
+// Junction table for many-to-many relationship between notes and tags
+model NoteTag {
+  id     Int @id @default(autoincrement())
+  noteId Int
+  tagId  Int
+
+  // Relationships
+  note Note @relation(fields: [noteId], references: [id], onDelete: Cascade)
+  tag  Tag  @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@unique([noteId, tagId])
+  @@map("note_tags")
+}
