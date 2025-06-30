@@ -6,6 +6,7 @@ import { UserController } from './user/user.controller';
 import { NoteController } from './note/note.controller';
 import { DesktopController } from './desktop/desktop.controller';
 import { TagController } from './tag/tag.controller';
+import { SettingsController } from './settings/settings.controller';
 import { TagService } from './tag/tag.service';
 import { NoteService } from './note/note.service';
 import { DesktopService } from './desktop/desktop.service';
@@ -14,6 +15,7 @@ import { UserModule } from './user/user.module';
 import { NoteModule } from './note/note.module';
 import { TagModule } from './tag/tag.module';
 import { DesktopModule } from './desktop/desktop.module';
+import { SettingsModule } from './settings/settings.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { AuthModule } from './auth/auth.module';
 
@@ -27,9 +29,10 @@ import { AuthModule } from './auth/auth.module';
     NoteModule, 
     TagModule, 
     DesktopModule,
+    SettingsModule,
     AuthModule
   ],
-  controllers: [AppController, UserController, NoteController, DesktopController, TagController],
+  controllers: [AppController, UserController, NoteController, DesktopController, TagController, SettingsController],
   providers: [AppService, TagService, NoteService, DesktopService, UserService],
 })
 export class AppModule {}

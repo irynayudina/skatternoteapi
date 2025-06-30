@@ -132,6 +132,14 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.UserSettingsScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  preferredTheme: 'preferredTheme',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.DesktopScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -184,6 +192,7 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   User: 'User',
+  UserSettings: 'UserSettings',
   Desktop: 'Desktop',
   Note: 'Note',
   Tag: 'Tag',

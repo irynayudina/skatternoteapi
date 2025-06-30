@@ -29,8 +29,23 @@ model User {
   // Relationships
   desktops Desktop[]
   notes    Note[]
+  settings UserSettings?
 
   @@map("users")
+}
+
+// UserSettings model for user preferences
+model UserSettings {
+  id             Int      @id @default(autoincrement())
+  userId         Int      @unique
+  preferredTheme String   @default("coldarkCold") // Default theme
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  // Relationships
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_settings")
 }
 
 // Desktop model for workspace organization
