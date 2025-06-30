@@ -17,6 +17,7 @@ export class SettingsService {
         data: {
           userId,
           preferredTheme: 'coldarkCold',
+          desktopBackground: null, // Default to no background
         },
       });
     }
@@ -49,5 +50,10 @@ export class SettingsService {
   async getPreferredTheme(userId: number): Promise<string> {
     const settings = await this.getUserSettings(userId);
     return settings.preferredTheme;
+  }
+
+  async getDesktopBackground(userId: number): Promise<string | null> {
+    const settings = await this.getUserSettings(userId);
+    return settings.desktopBackground;
   }
 } 

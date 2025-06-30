@@ -4,4 +4,8 @@ export class UpdateSettingsDto {
   @IsOptional()
   @IsString()
   preferredTheme?: string;
+
+  @IsOptional()
+  @IsString()
+  desktopBackground?: string;
 } 

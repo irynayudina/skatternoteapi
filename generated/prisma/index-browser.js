@@ -136,6 +136,7 @@ exports.Prisma.UserSettingsScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   preferredTheme: 'preferredTheme',
+  desktopBackground: 'desktopBackground',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

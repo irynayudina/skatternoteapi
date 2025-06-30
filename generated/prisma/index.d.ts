@@ -2689,6 +2689,7 @@ export namespace Prisma {
     id: number | null
     userId: number | null
     preferredTheme: string | null
+    desktopBackground: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2697,6 +2698,7 @@ export namespace Prisma {
     id: number | null
     userId: number | null
     preferredTheme: string | null
+    desktopBackground: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2705,6 +2707,7 @@ export namespace Prisma {
     id: number
     userId: number
     preferredTheme: number
+    desktopBackground: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -2725,6 +2728,7 @@ export namespace Prisma {
     id?: true
     userId?: true
     preferredTheme?: true
+    desktopBackground?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2733,6 +2737,7 @@ export namespace Prisma {
     id?: true
     userId?: true
     preferredTheme?: true
+    desktopBackground?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2741,6 +2746,7 @@ export namespace Prisma {
     id?: true
     userId?: true
     preferredTheme?: true
+    desktopBackground?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -2836,6 +2842,7 @@ export namespace Prisma {
     id: number
     userId: number
     preferredTheme: string
+    desktopBackground: string | null
     createdAt: Date
     updatedAt: Date
     _count: UserSettingsCountAggregateOutputType | null
@@ -2863,6 +2870,7 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     preferredTheme?: boolean
+    desktopBackground?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2872,6 +2880,7 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     preferredTheme?: boolean
+    desktopBackground?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2881,6 +2890,7 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     preferredTheme?: boolean
+    desktopBackground?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2890,11 +2900,12 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     preferredTheme?: boolean
+    desktopBackground?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserSettingsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "preferredTheme" | "createdAt" | "updatedAt", ExtArgs["result"]["userSettings"]>
+  export type UserSettingsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "preferredTheme" | "desktopBackground" | "createdAt" | "updatedAt", ExtArgs["result"]["userSettings"]>
   export type UserSettingsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -2914,6 +2925,7 @@ export namespace Prisma {
       id: number
       userId: number
       preferredTheme: string
+      desktopBackground: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["userSettings"]>
@@ -3343,6 +3355,7 @@ export namespace Prisma {
     readonly id: FieldRef<"UserSettings", 'Int'>
     readonly userId: FieldRef<"UserSettings", 'Int'>
     readonly preferredTheme: FieldRef<"UserSettings", 'String'>
+    readonly desktopBackground: FieldRef<"UserSettings", 'String'>
     readonly createdAt: FieldRef<"UserSettings", 'DateTime'>
     readonly updatedAt: FieldRef<"UserSettings", 'DateTime'>
   }
@@ -8294,6 +8307,7 @@ export namespace Prisma {
     id: 'id',
     userId: 'userId',
     preferredTheme: 'preferredTheme',
+    desktopBackground: 'desktopBackground',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -8532,6 +8546,7 @@ export namespace Prisma {
     id?: IntFilter<"UserSettings"> | number
     userId?: IntFilter<"UserSettings"> | number
     preferredTheme?: StringFilter<"UserSettings"> | string
+    desktopBackground?: StringNullableFilter<"UserSettings"> | string | null
     createdAt?: DateTimeFilter<"UserSettings"> | Date | string
     updatedAt?: DateTimeFilter<"UserSettings"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -8541,6 +8556,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     preferredTheme?: SortOrder
+    desktopBackground?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
@@ -8553,6 +8569,7 @@ export namespace Prisma {
     OR?: UserSettingsWhereInput[]
     NOT?: UserSettingsWhereInput | UserSettingsWhereInput[]
     preferredTheme?: StringFilter<"UserSettings"> | string
+    desktopBackground?: StringNullableFilter<"UserSettings"> | string | null
     createdAt?: DateTimeFilter<"UserSettings"> | Date | string
     updatedAt?: DateTimeFilter<"UserSettings"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -8562,6 +8579,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     preferredTheme?: SortOrder
+    desktopBackground?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserSettingsCountOrderByAggregateInput
@@ -8578,6 +8596,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"UserSettings"> | number
     userId?: IntWithAggregatesFilter<"UserSettings"> | number
     preferredTheme?: StringWithAggregatesFilter<"UserSettings"> | string
+    desktopBackground?: StringNullableWithAggregatesFilter<"UserSettings"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"UserSettings"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"UserSettings"> | Date | string
   }
@@ -8928,6 +8947,7 @@ export namespace Prisma {
 
   export type UserSettingsCreateInput = {
     preferredTheme?: string
+    desktopBackground?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutSettingsInput
@@ -8937,12 +8957,14 @@ export namespace Prisma {
     id?: number
     userId: number
     preferredTheme?: string
+    desktopBackground?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type UserSettingsUpdateInput = {
     preferredTheme?: StringFieldUpdateOperationsInput | string
+    desktopBackground?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutSettingsNestedInput
@@ -8952,6 +8974,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     preferredTheme?: StringFieldUpdateOperationsInput | string
+    desktopBackground?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8960,12 +8983,14 @@ export namespace Prisma {
     id?: number
     userId: number
     preferredTheme?: string
+    desktopBackground?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type UserSettingsUpdateManyMutationInput = {
     preferredTheme?: StringFieldUpdateOperationsInput | string
+    desktopBackground?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8974,6 +8999,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     preferredTheme?: StringFieldUpdateOperationsInput | string
+    desktopBackground?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9413,6 +9439,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     preferredTheme?: SortOrder
+    desktopBackground?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9426,6 +9453,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     preferredTheme?: SortOrder
+    desktopBackground?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9434,6 +9462,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     preferredTheme?: SortOrder
+    desktopBackground?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -10189,6 +10218,7 @@ export namespace Prisma {
 
   export type UserSettingsCreateWithoutUserInput = {
     preferredTheme?: string
+    desktopBackground?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10196,6 +10226,7 @@ export namespace Prisma {
   export type UserSettingsUncheckedCreateWithoutUserInput = {
     id?: number
     preferredTheme?: string
+    desktopBackground?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10276,6 +10307,7 @@ export namespace Prisma {
 
   export type UserSettingsUpdateWithoutUserInput = {
     preferredTheme?: StringFieldUpdateOperationsInput | string
+    desktopBackground?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10283,6 +10315,7 @@ export namespace Prisma {
   export type UserSettingsUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     preferredTheme?: StringFieldUpdateOperationsInput | string
+    desktopBackground?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

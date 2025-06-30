@@ -40,4 +40,13 @@ export class SettingsController {
       data: { preferredTheme: theme },
     };
   }
+
+  @Get('background')
+  async getDesktopBackground(@Query('userId') userId: string) {
+    const background = await this.settingsService.getDesktopBackground(parseInt(userId));
+    return {
+      message: 'Desktop background retrieved successfully',
+      data: { desktopBackground: background },
+    };
+  }
 } 
