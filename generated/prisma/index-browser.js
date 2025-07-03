@@ -175,6 +175,27 @@ exports.Prisma.NoteTagScalarFieldEnum = {
   tagId: 'tagId'
 };
 
+exports.Prisma.RoadmapScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  desktopId: 'desktopId',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.RoadmapStepScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  order: 'order',
+  isCompleted: 'isCompleted',
+  roadmapId: 'roadmapId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -197,7 +218,9 @@ exports.Prisma.ModelName = {
   Desktop: 'Desktop',
   Note: 'Note',
   Tag: 'Tag',
-  NoteTag: 'NoteTag'
+  NoteTag: 'NoteTag',
+  Roadmap: 'Roadmap',
+  RoadmapStep: 'RoadmapStep'
 };
 
 /**

@@ -43,6 +43,16 @@ export type Tag = $Result.DefaultSelection<Prisma.$TagPayload>
  * 
  */
 export type NoteTag = $Result.DefaultSelection<Prisma.$NoteTagPayload>
+/**
+ * Model Roadmap
+ * 
+ */
+export type Roadmap = $Result.DefaultSelection<Prisma.$RoadmapPayload>
+/**
+ * Model RoadmapStep
+ * 
+ */
+export type RoadmapStep = $Result.DefaultSelection<Prisma.$RoadmapStepPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -228,6 +238,26 @@ export class PrismaClient<
     * ```
     */
   get noteTag(): Prisma.NoteTagDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.roadmap`: Exposes CRUD operations for the **Roadmap** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Roadmaps
+    * const roadmaps = await prisma.roadmap.findMany()
+    * ```
+    */
+  get roadmap(): Prisma.RoadmapDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.roadmapStep`: Exposes CRUD operations for the **RoadmapStep** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more RoadmapSteps
+    * const roadmapSteps = await prisma.roadmapStep.findMany()
+    * ```
+    */
+  get roadmapStep(): Prisma.RoadmapStepDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -673,7 +703,9 @@ export namespace Prisma {
     Desktop: 'Desktop',
     Note: 'Note',
     Tag: 'Tag',
-    NoteTag: 'NoteTag'
+    NoteTag: 'NoteTag',
+    Roadmap: 'Roadmap',
+    RoadmapStep: 'RoadmapStep'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -692,7 +724,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "userSettings" | "desktop" | "note" | "tag" | "noteTag"
+      modelProps: "user" | "userSettings" | "desktop" | "note" | "tag" | "noteTag" | "roadmap" | "roadmapStep"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1140,6 +1172,154 @@ export namespace Prisma {
           }
         }
       }
+      Roadmap: {
+        payload: Prisma.$RoadmapPayload<ExtArgs>
+        fields: Prisma.RoadmapFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RoadmapFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoadmapPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RoadmapFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoadmapPayload>
+          }
+          findFirst: {
+            args: Prisma.RoadmapFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoadmapPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RoadmapFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoadmapPayload>
+          }
+          findMany: {
+            args: Prisma.RoadmapFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoadmapPayload>[]
+          }
+          create: {
+            args: Prisma.RoadmapCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoadmapPayload>
+          }
+          createMany: {
+            args: Prisma.RoadmapCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.RoadmapCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoadmapPayload>[]
+          }
+          delete: {
+            args: Prisma.RoadmapDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoadmapPayload>
+          }
+          update: {
+            args: Prisma.RoadmapUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoadmapPayload>
+          }
+          deleteMany: {
+            args: Prisma.RoadmapDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RoadmapUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.RoadmapUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoadmapPayload>[]
+          }
+          upsert: {
+            args: Prisma.RoadmapUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoadmapPayload>
+          }
+          aggregate: {
+            args: Prisma.RoadmapAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRoadmap>
+          }
+          groupBy: {
+            args: Prisma.RoadmapGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RoadmapGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.RoadmapCountArgs<ExtArgs>
+            result: $Utils.Optional<RoadmapCountAggregateOutputType> | number
+          }
+        }
+      }
+      RoadmapStep: {
+        payload: Prisma.$RoadmapStepPayload<ExtArgs>
+        fields: Prisma.RoadmapStepFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RoadmapStepFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoadmapStepPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RoadmapStepFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoadmapStepPayload>
+          }
+          findFirst: {
+            args: Prisma.RoadmapStepFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoadmapStepPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RoadmapStepFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoadmapStepPayload>
+          }
+          findMany: {
+            args: Prisma.RoadmapStepFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoadmapStepPayload>[]
+          }
+          create: {
+            args: Prisma.RoadmapStepCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoadmapStepPayload>
+          }
+          createMany: {
+            args: Prisma.RoadmapStepCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.RoadmapStepCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoadmapStepPayload>[]
+          }
+          delete: {
+            args: Prisma.RoadmapStepDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoadmapStepPayload>
+          }
+          update: {
+            args: Prisma.RoadmapStepUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoadmapStepPayload>
+          }
+          deleteMany: {
+            args: Prisma.RoadmapStepDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RoadmapStepUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.RoadmapStepUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoadmapStepPayload>[]
+          }
+          upsert: {
+            args: Prisma.RoadmapStepUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RoadmapStepPayload>
+          }
+          aggregate: {
+            args: Prisma.RoadmapStepAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRoadmapStep>
+          }
+          groupBy: {
+            args: Prisma.RoadmapStepGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RoadmapStepGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.RoadmapStepCountArgs<ExtArgs>
+            result: $Utils.Optional<RoadmapStepCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1230,6 +1410,8 @@ export namespace Prisma {
     note?: NoteOmit
     tag?: TagOmit
     noteTag?: NoteTagOmit
+    roadmap?: RoadmapOmit
+    roadmapStep?: RoadmapStepOmit
   }
 
   /* Types for Logging */
@@ -1326,11 +1508,13 @@ export namespace Prisma {
   export type UserCountOutputType = {
     desktops: number
     notes: number
+    roadmaps: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     desktops?: boolean | UserCountOutputTypeCountDesktopsArgs
     notes?: boolean | UserCountOutputTypeCountNotesArgs
+    roadmaps?: boolean | UserCountOutputTypeCountRoadmapsArgs
   }
 
   // Custom InputTypes
@@ -1358,6 +1542,13 @@ export namespace Prisma {
     where?: NoteWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountRoadmapsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RoadmapWhereInput
+  }
+
 
   /**
    * Count Type DesktopCountOutputType
@@ -1365,10 +1556,12 @@ export namespace Prisma {
 
   export type DesktopCountOutputType = {
     notes: number
+    roadmaps: number
   }
 
   export type DesktopCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     notes?: boolean | DesktopCountOutputTypeCountNotesArgs
+    roadmaps?: boolean | DesktopCountOutputTypeCountRoadmapsArgs
   }
 
   // Custom InputTypes
@@ -1387,6 +1580,13 @@ export namespace Prisma {
    */
   export type DesktopCountOutputTypeCountNotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: NoteWhereInput
+  }
+
+  /**
+   * DesktopCountOutputType without action
+   */
+  export type DesktopCountOutputTypeCountRoadmapsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RoadmapWhereInput
   }
 
 
@@ -1449,6 +1649,37 @@ export namespace Prisma {
    */
   export type TagCountOutputTypeCountNotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: NoteTagWhereInput
+  }
+
+
+  /**
+   * Count Type RoadmapCountOutputType
+   */
+
+  export type RoadmapCountOutputType = {
+    steps: number
+  }
+
+  export type RoadmapCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    steps?: boolean | RoadmapCountOutputTypeCountStepsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * RoadmapCountOutputType without action
+   */
+  export type RoadmapCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoadmapCountOutputType
+     */
+    select?: RoadmapCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * RoadmapCountOutputType without action
+   */
+  export type RoadmapCountOutputTypeCountStepsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RoadmapStepWhereInput
   }
 
 
@@ -1688,6 +1919,7 @@ export namespace Prisma {
     updatedAt?: boolean
     desktops?: boolean | User$desktopsArgs<ExtArgs>
     notes?: boolean | User$notesArgs<ExtArgs>
+    roadmaps?: boolean | User$roadmapsArgs<ExtArgs>
     settings?: boolean | User$settingsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -1732,6 +1964,7 @@ export namespace Prisma {
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     desktops?: boolean | User$desktopsArgs<ExtArgs>
     notes?: boolean | User$notesArgs<ExtArgs>
+    roadmaps?: boolean | User$roadmapsArgs<ExtArgs>
     settings?: boolean | User$settingsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -1743,6 +1976,7 @@ export namespace Prisma {
     objects: {
       desktops: Prisma.$DesktopPayload<ExtArgs>[]
       notes: Prisma.$NotePayload<ExtArgs>[]
+      roadmaps: Prisma.$RoadmapPayload<ExtArgs>[]
       settings: Prisma.$UserSettingsPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -2151,6 +2385,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     desktops<T extends User$desktopsArgs<ExtArgs> = {}>(args?: Subset<T, User$desktopsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DesktopPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     notes<T extends User$notesArgs<ExtArgs> = {}>(args?: Subset<T, User$notesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    roadmaps<T extends User$roadmapsArgs<ExtArgs> = {}>(args?: Subset<T, User$roadmapsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoadmapPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     settings<T extends User$settingsArgs<ExtArgs> = {}>(args?: Subset<T, User$settingsArgs<ExtArgs>>): Prisma__UserSettingsClient<$Result.GetResult<Prisma.$UserSettingsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2623,6 +2858,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: NoteScalarFieldEnum | NoteScalarFieldEnum[]
+  }
+
+  /**
+   * User.roadmaps
+   */
+  export type User$roadmapsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Roadmap
+     */
+    select?: RoadmapSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Roadmap
+     */
+    omit?: RoadmapOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapInclude<ExtArgs> | null
+    where?: RoadmapWhereInput
+    orderBy?: RoadmapOrderByWithRelationInput | RoadmapOrderByWithRelationInput[]
+    cursor?: RoadmapWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RoadmapScalarFieldEnum | RoadmapScalarFieldEnum[]
   }
 
   /**
@@ -3984,6 +4243,7 @@ export namespace Prisma {
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     notes?: boolean | Desktop$notesArgs<ExtArgs>
+    roadmaps?: boolean | Desktop$roadmapsArgs<ExtArgs>
     _count?: boolean | DesktopCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["desktop"]>
 
@@ -4020,6 +4280,7 @@ export namespace Prisma {
   export type DesktopInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     notes?: boolean | Desktop$notesArgs<ExtArgs>
+    roadmaps?: boolean | Desktop$roadmapsArgs<ExtArgs>
     _count?: boolean | DesktopCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type DesktopIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4034,6 +4295,7 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       notes: Prisma.$NotePayload<ExtArgs>[]
+      roadmaps: Prisma.$RoadmapPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -4438,6 +4700,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     notes<T extends Desktop$notesArgs<ExtArgs> = {}>(args?: Subset<T, Desktop$notesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    roadmaps<T extends Desktop$roadmapsArgs<ExtArgs> = {}>(args?: Subset<T, Desktop$roadmapsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoadmapPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4890,6 +5153,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: NoteScalarFieldEnum | NoteScalarFieldEnum[]
+  }
+
+  /**
+   * Desktop.roadmaps
+   */
+  export type Desktop$roadmapsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Roadmap
+     */
+    select?: RoadmapSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Roadmap
+     */
+    omit?: RoadmapOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapInclude<ExtArgs> | null
+    where?: RoadmapWhereInput
+    orderBy?: RoadmapOrderByWithRelationInput | RoadmapOrderByWithRelationInput[]
+    cursor?: RoadmapWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RoadmapScalarFieldEnum | RoadmapScalarFieldEnum[]
   }
 
   /**
@@ -8275,6 +8562,2309 @@ export namespace Prisma {
 
 
   /**
+   * Model Roadmap
+   */
+
+  export type AggregateRoadmap = {
+    _count: RoadmapCountAggregateOutputType | null
+    _avg: RoadmapAvgAggregateOutputType | null
+    _sum: RoadmapSumAggregateOutputType | null
+    _min: RoadmapMinAggregateOutputType | null
+    _max: RoadmapMaxAggregateOutputType | null
+  }
+
+  export type RoadmapAvgAggregateOutputType = {
+    id: number | null
+    desktopId: number | null
+    userId: number | null
+  }
+
+  export type RoadmapSumAggregateOutputType = {
+    id: number | null
+    desktopId: number | null
+    userId: number | null
+  }
+
+  export type RoadmapMinAggregateOutputType = {
+    id: number | null
+    title: string | null
+    description: string | null
+    desktopId: number | null
+    userId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type RoadmapMaxAggregateOutputType = {
+    id: number | null
+    title: string | null
+    description: string | null
+    desktopId: number | null
+    userId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type RoadmapCountAggregateOutputType = {
+    id: number
+    title: number
+    description: number
+    desktopId: number
+    userId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type RoadmapAvgAggregateInputType = {
+    id?: true
+    desktopId?: true
+    userId?: true
+  }
+
+  export type RoadmapSumAggregateInputType = {
+    id?: true
+    desktopId?: true
+    userId?: true
+  }
+
+  export type RoadmapMinAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    desktopId?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type RoadmapMaxAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    desktopId?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type RoadmapCountAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    desktopId?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type RoadmapAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Roadmap to aggregate.
+     */
+    where?: RoadmapWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Roadmaps to fetch.
+     */
+    orderBy?: RoadmapOrderByWithRelationInput | RoadmapOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RoadmapWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Roadmaps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Roadmaps.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Roadmaps
+    **/
+    _count?: true | RoadmapCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: RoadmapAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: RoadmapSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RoadmapMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RoadmapMaxAggregateInputType
+  }
+
+  export type GetRoadmapAggregateType<T extends RoadmapAggregateArgs> = {
+        [P in keyof T & keyof AggregateRoadmap]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRoadmap[P]>
+      : GetScalarType<T[P], AggregateRoadmap[P]>
+  }
+
+
+
+
+  export type RoadmapGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RoadmapWhereInput
+    orderBy?: RoadmapOrderByWithAggregationInput | RoadmapOrderByWithAggregationInput[]
+    by: RoadmapScalarFieldEnum[] | RoadmapScalarFieldEnum
+    having?: RoadmapScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RoadmapCountAggregateInputType | true
+    _avg?: RoadmapAvgAggregateInputType
+    _sum?: RoadmapSumAggregateInputType
+    _min?: RoadmapMinAggregateInputType
+    _max?: RoadmapMaxAggregateInputType
+  }
+
+  export type RoadmapGroupByOutputType = {
+    id: number
+    title: string
+    description: string | null
+    desktopId: number
+    userId: number
+    createdAt: Date
+    updatedAt: Date
+    _count: RoadmapCountAggregateOutputType | null
+    _avg: RoadmapAvgAggregateOutputType | null
+    _sum: RoadmapSumAggregateOutputType | null
+    _min: RoadmapMinAggregateOutputType | null
+    _max: RoadmapMaxAggregateOutputType | null
+  }
+
+  type GetRoadmapGroupByPayload<T extends RoadmapGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RoadmapGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RoadmapGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RoadmapGroupByOutputType[P]>
+            : GetScalarType<T[P], RoadmapGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RoadmapSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    desktopId?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    desktop?: boolean | DesktopDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    steps?: boolean | Roadmap$stepsArgs<ExtArgs>
+    _count?: boolean | RoadmapCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["roadmap"]>
+
+  export type RoadmapSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    desktopId?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    desktop?: boolean | DesktopDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["roadmap"]>
+
+  export type RoadmapSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    desktopId?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    desktop?: boolean | DesktopDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["roadmap"]>
+
+  export type RoadmapSelectScalar = {
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    desktopId?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type RoadmapOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "desktopId" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["roadmap"]>
+  export type RoadmapInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    desktop?: boolean | DesktopDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    steps?: boolean | Roadmap$stepsArgs<ExtArgs>
+    _count?: boolean | RoadmapCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type RoadmapIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    desktop?: boolean | DesktopDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type RoadmapIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    desktop?: boolean | DesktopDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $RoadmapPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Roadmap"
+    objects: {
+      desktop: Prisma.$DesktopPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
+      steps: Prisma.$RoadmapStepPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      title: string
+      description: string | null
+      desktopId: number
+      userId: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["roadmap"]>
+    composites: {}
+  }
+
+  type RoadmapGetPayload<S extends boolean | null | undefined | RoadmapDefaultArgs> = $Result.GetResult<Prisma.$RoadmapPayload, S>
+
+  type RoadmapCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RoadmapFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RoadmapCountAggregateInputType | true
+    }
+
+  export interface RoadmapDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Roadmap'], meta: { name: 'Roadmap' } }
+    /**
+     * Find zero or one Roadmap that matches the filter.
+     * @param {RoadmapFindUniqueArgs} args - Arguments to find a Roadmap
+     * @example
+     * // Get one Roadmap
+     * const roadmap = await prisma.roadmap.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RoadmapFindUniqueArgs>(args: SelectSubset<T, RoadmapFindUniqueArgs<ExtArgs>>): Prisma__RoadmapClient<$Result.GetResult<Prisma.$RoadmapPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Roadmap that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RoadmapFindUniqueOrThrowArgs} args - Arguments to find a Roadmap
+     * @example
+     * // Get one Roadmap
+     * const roadmap = await prisma.roadmap.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RoadmapFindUniqueOrThrowArgs>(args: SelectSubset<T, RoadmapFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RoadmapClient<$Result.GetResult<Prisma.$RoadmapPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Roadmap that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoadmapFindFirstArgs} args - Arguments to find a Roadmap
+     * @example
+     * // Get one Roadmap
+     * const roadmap = await prisma.roadmap.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RoadmapFindFirstArgs>(args?: SelectSubset<T, RoadmapFindFirstArgs<ExtArgs>>): Prisma__RoadmapClient<$Result.GetResult<Prisma.$RoadmapPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Roadmap that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoadmapFindFirstOrThrowArgs} args - Arguments to find a Roadmap
+     * @example
+     * // Get one Roadmap
+     * const roadmap = await prisma.roadmap.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RoadmapFindFirstOrThrowArgs>(args?: SelectSubset<T, RoadmapFindFirstOrThrowArgs<ExtArgs>>): Prisma__RoadmapClient<$Result.GetResult<Prisma.$RoadmapPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Roadmaps that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoadmapFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Roadmaps
+     * const roadmaps = await prisma.roadmap.findMany()
+     * 
+     * // Get first 10 Roadmaps
+     * const roadmaps = await prisma.roadmap.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const roadmapWithIdOnly = await prisma.roadmap.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends RoadmapFindManyArgs>(args?: SelectSubset<T, RoadmapFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoadmapPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Roadmap.
+     * @param {RoadmapCreateArgs} args - Arguments to create a Roadmap.
+     * @example
+     * // Create one Roadmap
+     * const Roadmap = await prisma.roadmap.create({
+     *   data: {
+     *     // ... data to create a Roadmap
+     *   }
+     * })
+     * 
+     */
+    create<T extends RoadmapCreateArgs>(args: SelectSubset<T, RoadmapCreateArgs<ExtArgs>>): Prisma__RoadmapClient<$Result.GetResult<Prisma.$RoadmapPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Roadmaps.
+     * @param {RoadmapCreateManyArgs} args - Arguments to create many Roadmaps.
+     * @example
+     * // Create many Roadmaps
+     * const roadmap = await prisma.roadmap.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RoadmapCreateManyArgs>(args?: SelectSubset<T, RoadmapCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Roadmaps and returns the data saved in the database.
+     * @param {RoadmapCreateManyAndReturnArgs} args - Arguments to create many Roadmaps.
+     * @example
+     * // Create many Roadmaps
+     * const roadmap = await prisma.roadmap.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Roadmaps and only return the `id`
+     * const roadmapWithIdOnly = await prisma.roadmap.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends RoadmapCreateManyAndReturnArgs>(args?: SelectSubset<T, RoadmapCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoadmapPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Roadmap.
+     * @param {RoadmapDeleteArgs} args - Arguments to delete one Roadmap.
+     * @example
+     * // Delete one Roadmap
+     * const Roadmap = await prisma.roadmap.delete({
+     *   where: {
+     *     // ... filter to delete one Roadmap
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RoadmapDeleteArgs>(args: SelectSubset<T, RoadmapDeleteArgs<ExtArgs>>): Prisma__RoadmapClient<$Result.GetResult<Prisma.$RoadmapPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Roadmap.
+     * @param {RoadmapUpdateArgs} args - Arguments to update one Roadmap.
+     * @example
+     * // Update one Roadmap
+     * const roadmap = await prisma.roadmap.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RoadmapUpdateArgs>(args: SelectSubset<T, RoadmapUpdateArgs<ExtArgs>>): Prisma__RoadmapClient<$Result.GetResult<Prisma.$RoadmapPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Roadmaps.
+     * @param {RoadmapDeleteManyArgs} args - Arguments to filter Roadmaps to delete.
+     * @example
+     * // Delete a few Roadmaps
+     * const { count } = await prisma.roadmap.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RoadmapDeleteManyArgs>(args?: SelectSubset<T, RoadmapDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Roadmaps.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoadmapUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Roadmaps
+     * const roadmap = await prisma.roadmap.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RoadmapUpdateManyArgs>(args: SelectSubset<T, RoadmapUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Roadmaps and returns the data updated in the database.
+     * @param {RoadmapUpdateManyAndReturnArgs} args - Arguments to update many Roadmaps.
+     * @example
+     * // Update many Roadmaps
+     * const roadmap = await prisma.roadmap.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Roadmaps and only return the `id`
+     * const roadmapWithIdOnly = await prisma.roadmap.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends RoadmapUpdateManyAndReturnArgs>(args: SelectSubset<T, RoadmapUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoadmapPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Roadmap.
+     * @param {RoadmapUpsertArgs} args - Arguments to update or create a Roadmap.
+     * @example
+     * // Update or create a Roadmap
+     * const roadmap = await prisma.roadmap.upsert({
+     *   create: {
+     *     // ... data to create a Roadmap
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Roadmap we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RoadmapUpsertArgs>(args: SelectSubset<T, RoadmapUpsertArgs<ExtArgs>>): Prisma__RoadmapClient<$Result.GetResult<Prisma.$RoadmapPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Roadmaps.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoadmapCountArgs} args - Arguments to filter Roadmaps to count.
+     * @example
+     * // Count the number of Roadmaps
+     * const count = await prisma.roadmap.count({
+     *   where: {
+     *     // ... the filter for the Roadmaps we want to count
+     *   }
+     * })
+    **/
+    count<T extends RoadmapCountArgs>(
+      args?: Subset<T, RoadmapCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RoadmapCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Roadmap.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoadmapAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RoadmapAggregateArgs>(args: Subset<T, RoadmapAggregateArgs>): Prisma.PrismaPromise<GetRoadmapAggregateType<T>>
+
+    /**
+     * Group by Roadmap.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoadmapGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RoadmapGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RoadmapGroupByArgs['orderBy'] }
+        : { orderBy?: RoadmapGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RoadmapGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRoadmapGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Roadmap model
+   */
+  readonly fields: RoadmapFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Roadmap.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RoadmapClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    desktop<T extends DesktopDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DesktopDefaultArgs<ExtArgs>>): Prisma__DesktopClient<$Result.GetResult<Prisma.$DesktopPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    steps<T extends Roadmap$stepsArgs<ExtArgs> = {}>(args?: Subset<T, Roadmap$stepsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoadmapStepPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Roadmap model
+   */
+  interface RoadmapFieldRefs {
+    readonly id: FieldRef<"Roadmap", 'Int'>
+    readonly title: FieldRef<"Roadmap", 'String'>
+    readonly description: FieldRef<"Roadmap", 'String'>
+    readonly desktopId: FieldRef<"Roadmap", 'Int'>
+    readonly userId: FieldRef<"Roadmap", 'Int'>
+    readonly createdAt: FieldRef<"Roadmap", 'DateTime'>
+    readonly updatedAt: FieldRef<"Roadmap", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Roadmap findUnique
+   */
+  export type RoadmapFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Roadmap
+     */
+    select?: RoadmapSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Roadmap
+     */
+    omit?: RoadmapOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapInclude<ExtArgs> | null
+    /**
+     * Filter, which Roadmap to fetch.
+     */
+    where: RoadmapWhereUniqueInput
+  }
+
+  /**
+   * Roadmap findUniqueOrThrow
+   */
+  export type RoadmapFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Roadmap
+     */
+    select?: RoadmapSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Roadmap
+     */
+    omit?: RoadmapOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapInclude<ExtArgs> | null
+    /**
+     * Filter, which Roadmap to fetch.
+     */
+    where: RoadmapWhereUniqueInput
+  }
+
+  /**
+   * Roadmap findFirst
+   */
+  export type RoadmapFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Roadmap
+     */
+    select?: RoadmapSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Roadmap
+     */
+    omit?: RoadmapOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapInclude<ExtArgs> | null
+    /**
+     * Filter, which Roadmap to fetch.
+     */
+    where?: RoadmapWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Roadmaps to fetch.
+     */
+    orderBy?: RoadmapOrderByWithRelationInput | RoadmapOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Roadmaps.
+     */
+    cursor?: RoadmapWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Roadmaps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Roadmaps.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Roadmaps.
+     */
+    distinct?: RoadmapScalarFieldEnum | RoadmapScalarFieldEnum[]
+  }
+
+  /**
+   * Roadmap findFirstOrThrow
+   */
+  export type RoadmapFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Roadmap
+     */
+    select?: RoadmapSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Roadmap
+     */
+    omit?: RoadmapOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapInclude<ExtArgs> | null
+    /**
+     * Filter, which Roadmap to fetch.
+     */
+    where?: RoadmapWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Roadmaps to fetch.
+     */
+    orderBy?: RoadmapOrderByWithRelationInput | RoadmapOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Roadmaps.
+     */
+    cursor?: RoadmapWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Roadmaps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Roadmaps.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Roadmaps.
+     */
+    distinct?: RoadmapScalarFieldEnum | RoadmapScalarFieldEnum[]
+  }
+
+  /**
+   * Roadmap findMany
+   */
+  export type RoadmapFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Roadmap
+     */
+    select?: RoadmapSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Roadmap
+     */
+    omit?: RoadmapOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapInclude<ExtArgs> | null
+    /**
+     * Filter, which Roadmaps to fetch.
+     */
+    where?: RoadmapWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Roadmaps to fetch.
+     */
+    orderBy?: RoadmapOrderByWithRelationInput | RoadmapOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Roadmaps.
+     */
+    cursor?: RoadmapWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Roadmaps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Roadmaps.
+     */
+    skip?: number
+    distinct?: RoadmapScalarFieldEnum | RoadmapScalarFieldEnum[]
+  }
+
+  /**
+   * Roadmap create
+   */
+  export type RoadmapCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Roadmap
+     */
+    select?: RoadmapSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Roadmap
+     */
+    omit?: RoadmapOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Roadmap.
+     */
+    data: XOR<RoadmapCreateInput, RoadmapUncheckedCreateInput>
+  }
+
+  /**
+   * Roadmap createMany
+   */
+  export type RoadmapCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Roadmaps.
+     */
+    data: RoadmapCreateManyInput | RoadmapCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Roadmap createManyAndReturn
+   */
+  export type RoadmapCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Roadmap
+     */
+    select?: RoadmapSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Roadmap
+     */
+    omit?: RoadmapOmit<ExtArgs> | null
+    /**
+     * The data used to create many Roadmaps.
+     */
+    data: RoadmapCreateManyInput | RoadmapCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Roadmap update
+   */
+  export type RoadmapUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Roadmap
+     */
+    select?: RoadmapSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Roadmap
+     */
+    omit?: RoadmapOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Roadmap.
+     */
+    data: XOR<RoadmapUpdateInput, RoadmapUncheckedUpdateInput>
+    /**
+     * Choose, which Roadmap to update.
+     */
+    where: RoadmapWhereUniqueInput
+  }
+
+  /**
+   * Roadmap updateMany
+   */
+  export type RoadmapUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Roadmaps.
+     */
+    data: XOR<RoadmapUpdateManyMutationInput, RoadmapUncheckedUpdateManyInput>
+    /**
+     * Filter which Roadmaps to update
+     */
+    where?: RoadmapWhereInput
+    /**
+     * Limit how many Roadmaps to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Roadmap updateManyAndReturn
+   */
+  export type RoadmapUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Roadmap
+     */
+    select?: RoadmapSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Roadmap
+     */
+    omit?: RoadmapOmit<ExtArgs> | null
+    /**
+     * The data used to update Roadmaps.
+     */
+    data: XOR<RoadmapUpdateManyMutationInput, RoadmapUncheckedUpdateManyInput>
+    /**
+     * Filter which Roadmaps to update
+     */
+    where?: RoadmapWhereInput
+    /**
+     * Limit how many Roadmaps to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Roadmap upsert
+   */
+  export type RoadmapUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Roadmap
+     */
+    select?: RoadmapSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Roadmap
+     */
+    omit?: RoadmapOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Roadmap to update in case it exists.
+     */
+    where: RoadmapWhereUniqueInput
+    /**
+     * In case the Roadmap found by the `where` argument doesn't exist, create a new Roadmap with this data.
+     */
+    create: XOR<RoadmapCreateInput, RoadmapUncheckedCreateInput>
+    /**
+     * In case the Roadmap was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RoadmapUpdateInput, RoadmapUncheckedUpdateInput>
+  }
+
+  /**
+   * Roadmap delete
+   */
+  export type RoadmapDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Roadmap
+     */
+    select?: RoadmapSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Roadmap
+     */
+    omit?: RoadmapOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapInclude<ExtArgs> | null
+    /**
+     * Filter which Roadmap to delete.
+     */
+    where: RoadmapWhereUniqueInput
+  }
+
+  /**
+   * Roadmap deleteMany
+   */
+  export type RoadmapDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Roadmaps to delete
+     */
+    where?: RoadmapWhereInput
+    /**
+     * Limit how many Roadmaps to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Roadmap.steps
+   */
+  export type Roadmap$stepsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoadmapStep
+     */
+    select?: RoadmapStepSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoadmapStep
+     */
+    omit?: RoadmapStepOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapStepInclude<ExtArgs> | null
+    where?: RoadmapStepWhereInput
+    orderBy?: RoadmapStepOrderByWithRelationInput | RoadmapStepOrderByWithRelationInput[]
+    cursor?: RoadmapStepWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RoadmapStepScalarFieldEnum | RoadmapStepScalarFieldEnum[]
+  }
+
+  /**
+   * Roadmap without action
+   */
+  export type RoadmapDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Roadmap
+     */
+    select?: RoadmapSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Roadmap
+     */
+    omit?: RoadmapOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model RoadmapStep
+   */
+
+  export type AggregateRoadmapStep = {
+    _count: RoadmapStepCountAggregateOutputType | null
+    _avg: RoadmapStepAvgAggregateOutputType | null
+    _sum: RoadmapStepSumAggregateOutputType | null
+    _min: RoadmapStepMinAggregateOutputType | null
+    _max: RoadmapStepMaxAggregateOutputType | null
+  }
+
+  export type RoadmapStepAvgAggregateOutputType = {
+    id: number | null
+    order: number | null
+    roadmapId: number | null
+  }
+
+  export type RoadmapStepSumAggregateOutputType = {
+    id: number | null
+    order: number | null
+    roadmapId: number | null
+  }
+
+  export type RoadmapStepMinAggregateOutputType = {
+    id: number | null
+    title: string | null
+    description: string | null
+    order: number | null
+    isCompleted: boolean | null
+    roadmapId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type RoadmapStepMaxAggregateOutputType = {
+    id: number | null
+    title: string | null
+    description: string | null
+    order: number | null
+    isCompleted: boolean | null
+    roadmapId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type RoadmapStepCountAggregateOutputType = {
+    id: number
+    title: number
+    description: number
+    order: number
+    isCompleted: number
+    roadmapId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type RoadmapStepAvgAggregateInputType = {
+    id?: true
+    order?: true
+    roadmapId?: true
+  }
+
+  export type RoadmapStepSumAggregateInputType = {
+    id?: true
+    order?: true
+    roadmapId?: true
+  }
+
+  export type RoadmapStepMinAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    order?: true
+    isCompleted?: true
+    roadmapId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type RoadmapStepMaxAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    order?: true
+    isCompleted?: true
+    roadmapId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type RoadmapStepCountAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    order?: true
+    isCompleted?: true
+    roadmapId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type RoadmapStepAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RoadmapStep to aggregate.
+     */
+    where?: RoadmapStepWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RoadmapSteps to fetch.
+     */
+    orderBy?: RoadmapStepOrderByWithRelationInput | RoadmapStepOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RoadmapStepWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RoadmapSteps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RoadmapSteps.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned RoadmapSteps
+    **/
+    _count?: true | RoadmapStepCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: RoadmapStepAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: RoadmapStepSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RoadmapStepMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RoadmapStepMaxAggregateInputType
+  }
+
+  export type GetRoadmapStepAggregateType<T extends RoadmapStepAggregateArgs> = {
+        [P in keyof T & keyof AggregateRoadmapStep]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRoadmapStep[P]>
+      : GetScalarType<T[P], AggregateRoadmapStep[P]>
+  }
+
+
+
+
+  export type RoadmapStepGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RoadmapStepWhereInput
+    orderBy?: RoadmapStepOrderByWithAggregationInput | RoadmapStepOrderByWithAggregationInput[]
+    by: RoadmapStepScalarFieldEnum[] | RoadmapStepScalarFieldEnum
+    having?: RoadmapStepScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RoadmapStepCountAggregateInputType | true
+    _avg?: RoadmapStepAvgAggregateInputType
+    _sum?: RoadmapStepSumAggregateInputType
+    _min?: RoadmapStepMinAggregateInputType
+    _max?: RoadmapStepMaxAggregateInputType
+  }
+
+  export type RoadmapStepGroupByOutputType = {
+    id: number
+    title: string
+    description: string | null
+    order: number
+    isCompleted: boolean
+    roadmapId: number
+    createdAt: Date
+    updatedAt: Date
+    _count: RoadmapStepCountAggregateOutputType | null
+    _avg: RoadmapStepAvgAggregateOutputType | null
+    _sum: RoadmapStepSumAggregateOutputType | null
+    _min: RoadmapStepMinAggregateOutputType | null
+    _max: RoadmapStepMaxAggregateOutputType | null
+  }
+
+  type GetRoadmapStepGroupByPayload<T extends RoadmapStepGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RoadmapStepGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RoadmapStepGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RoadmapStepGroupByOutputType[P]>
+            : GetScalarType<T[P], RoadmapStepGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RoadmapStepSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    order?: boolean
+    isCompleted?: boolean
+    roadmapId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    roadmap?: boolean | RoadmapDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["roadmapStep"]>
+
+  export type RoadmapStepSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    order?: boolean
+    isCompleted?: boolean
+    roadmapId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    roadmap?: boolean | RoadmapDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["roadmapStep"]>
+
+  export type RoadmapStepSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    order?: boolean
+    isCompleted?: boolean
+    roadmapId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    roadmap?: boolean | RoadmapDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["roadmapStep"]>
+
+  export type RoadmapStepSelectScalar = {
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    order?: boolean
+    isCompleted?: boolean
+    roadmapId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type RoadmapStepOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "order" | "isCompleted" | "roadmapId" | "createdAt" | "updatedAt", ExtArgs["result"]["roadmapStep"]>
+  export type RoadmapStepInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    roadmap?: boolean | RoadmapDefaultArgs<ExtArgs>
+  }
+  export type RoadmapStepIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    roadmap?: boolean | RoadmapDefaultArgs<ExtArgs>
+  }
+  export type RoadmapStepIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    roadmap?: boolean | RoadmapDefaultArgs<ExtArgs>
+  }
+
+  export type $RoadmapStepPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "RoadmapStep"
+    objects: {
+      roadmap: Prisma.$RoadmapPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      title: string
+      description: string | null
+      order: number
+      isCompleted: boolean
+      roadmapId: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["roadmapStep"]>
+    composites: {}
+  }
+
+  type RoadmapStepGetPayload<S extends boolean | null | undefined | RoadmapStepDefaultArgs> = $Result.GetResult<Prisma.$RoadmapStepPayload, S>
+
+  type RoadmapStepCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RoadmapStepFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RoadmapStepCountAggregateInputType | true
+    }
+
+  export interface RoadmapStepDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['RoadmapStep'], meta: { name: 'RoadmapStep' } }
+    /**
+     * Find zero or one RoadmapStep that matches the filter.
+     * @param {RoadmapStepFindUniqueArgs} args - Arguments to find a RoadmapStep
+     * @example
+     * // Get one RoadmapStep
+     * const roadmapStep = await prisma.roadmapStep.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RoadmapStepFindUniqueArgs>(args: SelectSubset<T, RoadmapStepFindUniqueArgs<ExtArgs>>): Prisma__RoadmapStepClient<$Result.GetResult<Prisma.$RoadmapStepPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one RoadmapStep that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RoadmapStepFindUniqueOrThrowArgs} args - Arguments to find a RoadmapStep
+     * @example
+     * // Get one RoadmapStep
+     * const roadmapStep = await prisma.roadmapStep.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RoadmapStepFindUniqueOrThrowArgs>(args: SelectSubset<T, RoadmapStepFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RoadmapStepClient<$Result.GetResult<Prisma.$RoadmapStepPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RoadmapStep that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoadmapStepFindFirstArgs} args - Arguments to find a RoadmapStep
+     * @example
+     * // Get one RoadmapStep
+     * const roadmapStep = await prisma.roadmapStep.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RoadmapStepFindFirstArgs>(args?: SelectSubset<T, RoadmapStepFindFirstArgs<ExtArgs>>): Prisma__RoadmapStepClient<$Result.GetResult<Prisma.$RoadmapStepPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RoadmapStep that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoadmapStepFindFirstOrThrowArgs} args - Arguments to find a RoadmapStep
+     * @example
+     * // Get one RoadmapStep
+     * const roadmapStep = await prisma.roadmapStep.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RoadmapStepFindFirstOrThrowArgs>(args?: SelectSubset<T, RoadmapStepFindFirstOrThrowArgs<ExtArgs>>): Prisma__RoadmapStepClient<$Result.GetResult<Prisma.$RoadmapStepPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more RoadmapSteps that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoadmapStepFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all RoadmapSteps
+     * const roadmapSteps = await prisma.roadmapStep.findMany()
+     * 
+     * // Get first 10 RoadmapSteps
+     * const roadmapSteps = await prisma.roadmapStep.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const roadmapStepWithIdOnly = await prisma.roadmapStep.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends RoadmapStepFindManyArgs>(args?: SelectSubset<T, RoadmapStepFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoadmapStepPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a RoadmapStep.
+     * @param {RoadmapStepCreateArgs} args - Arguments to create a RoadmapStep.
+     * @example
+     * // Create one RoadmapStep
+     * const RoadmapStep = await prisma.roadmapStep.create({
+     *   data: {
+     *     // ... data to create a RoadmapStep
+     *   }
+     * })
+     * 
+     */
+    create<T extends RoadmapStepCreateArgs>(args: SelectSubset<T, RoadmapStepCreateArgs<ExtArgs>>): Prisma__RoadmapStepClient<$Result.GetResult<Prisma.$RoadmapStepPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many RoadmapSteps.
+     * @param {RoadmapStepCreateManyArgs} args - Arguments to create many RoadmapSteps.
+     * @example
+     * // Create many RoadmapSteps
+     * const roadmapStep = await prisma.roadmapStep.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RoadmapStepCreateManyArgs>(args?: SelectSubset<T, RoadmapStepCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many RoadmapSteps and returns the data saved in the database.
+     * @param {RoadmapStepCreateManyAndReturnArgs} args - Arguments to create many RoadmapSteps.
+     * @example
+     * // Create many RoadmapSteps
+     * const roadmapStep = await prisma.roadmapStep.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many RoadmapSteps and only return the `id`
+     * const roadmapStepWithIdOnly = await prisma.roadmapStep.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends RoadmapStepCreateManyAndReturnArgs>(args?: SelectSubset<T, RoadmapStepCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoadmapStepPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a RoadmapStep.
+     * @param {RoadmapStepDeleteArgs} args - Arguments to delete one RoadmapStep.
+     * @example
+     * // Delete one RoadmapStep
+     * const RoadmapStep = await prisma.roadmapStep.delete({
+     *   where: {
+     *     // ... filter to delete one RoadmapStep
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RoadmapStepDeleteArgs>(args: SelectSubset<T, RoadmapStepDeleteArgs<ExtArgs>>): Prisma__RoadmapStepClient<$Result.GetResult<Prisma.$RoadmapStepPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one RoadmapStep.
+     * @param {RoadmapStepUpdateArgs} args - Arguments to update one RoadmapStep.
+     * @example
+     * // Update one RoadmapStep
+     * const roadmapStep = await prisma.roadmapStep.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RoadmapStepUpdateArgs>(args: SelectSubset<T, RoadmapStepUpdateArgs<ExtArgs>>): Prisma__RoadmapStepClient<$Result.GetResult<Prisma.$RoadmapStepPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more RoadmapSteps.
+     * @param {RoadmapStepDeleteManyArgs} args - Arguments to filter RoadmapSteps to delete.
+     * @example
+     * // Delete a few RoadmapSteps
+     * const { count } = await prisma.roadmapStep.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RoadmapStepDeleteManyArgs>(args?: SelectSubset<T, RoadmapStepDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RoadmapSteps.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoadmapStepUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many RoadmapSteps
+     * const roadmapStep = await prisma.roadmapStep.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RoadmapStepUpdateManyArgs>(args: SelectSubset<T, RoadmapStepUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RoadmapSteps and returns the data updated in the database.
+     * @param {RoadmapStepUpdateManyAndReturnArgs} args - Arguments to update many RoadmapSteps.
+     * @example
+     * // Update many RoadmapSteps
+     * const roadmapStep = await prisma.roadmapStep.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more RoadmapSteps and only return the `id`
+     * const roadmapStepWithIdOnly = await prisma.roadmapStep.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends RoadmapStepUpdateManyAndReturnArgs>(args: SelectSubset<T, RoadmapStepUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoadmapStepPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one RoadmapStep.
+     * @param {RoadmapStepUpsertArgs} args - Arguments to update or create a RoadmapStep.
+     * @example
+     * // Update or create a RoadmapStep
+     * const roadmapStep = await prisma.roadmapStep.upsert({
+     *   create: {
+     *     // ... data to create a RoadmapStep
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the RoadmapStep we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RoadmapStepUpsertArgs>(args: SelectSubset<T, RoadmapStepUpsertArgs<ExtArgs>>): Prisma__RoadmapStepClient<$Result.GetResult<Prisma.$RoadmapStepPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of RoadmapSteps.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoadmapStepCountArgs} args - Arguments to filter RoadmapSteps to count.
+     * @example
+     * // Count the number of RoadmapSteps
+     * const count = await prisma.roadmapStep.count({
+     *   where: {
+     *     // ... the filter for the RoadmapSteps we want to count
+     *   }
+     * })
+    **/
+    count<T extends RoadmapStepCountArgs>(
+      args?: Subset<T, RoadmapStepCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RoadmapStepCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a RoadmapStep.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoadmapStepAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RoadmapStepAggregateArgs>(args: Subset<T, RoadmapStepAggregateArgs>): Prisma.PrismaPromise<GetRoadmapStepAggregateType<T>>
+
+    /**
+     * Group by RoadmapStep.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RoadmapStepGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RoadmapStepGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RoadmapStepGroupByArgs['orderBy'] }
+        : { orderBy?: RoadmapStepGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RoadmapStepGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRoadmapStepGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the RoadmapStep model
+   */
+  readonly fields: RoadmapStepFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for RoadmapStep.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RoadmapStepClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    roadmap<T extends RoadmapDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RoadmapDefaultArgs<ExtArgs>>): Prisma__RoadmapClient<$Result.GetResult<Prisma.$RoadmapPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the RoadmapStep model
+   */
+  interface RoadmapStepFieldRefs {
+    readonly id: FieldRef<"RoadmapStep", 'Int'>
+    readonly title: FieldRef<"RoadmapStep", 'String'>
+    readonly description: FieldRef<"RoadmapStep", 'String'>
+    readonly order: FieldRef<"RoadmapStep", 'Int'>
+    readonly isCompleted: FieldRef<"RoadmapStep", 'Boolean'>
+    readonly roadmapId: FieldRef<"RoadmapStep", 'Int'>
+    readonly createdAt: FieldRef<"RoadmapStep", 'DateTime'>
+    readonly updatedAt: FieldRef<"RoadmapStep", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * RoadmapStep findUnique
+   */
+  export type RoadmapStepFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoadmapStep
+     */
+    select?: RoadmapStepSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoadmapStep
+     */
+    omit?: RoadmapStepOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapStepInclude<ExtArgs> | null
+    /**
+     * Filter, which RoadmapStep to fetch.
+     */
+    where: RoadmapStepWhereUniqueInput
+  }
+
+  /**
+   * RoadmapStep findUniqueOrThrow
+   */
+  export type RoadmapStepFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoadmapStep
+     */
+    select?: RoadmapStepSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoadmapStep
+     */
+    omit?: RoadmapStepOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapStepInclude<ExtArgs> | null
+    /**
+     * Filter, which RoadmapStep to fetch.
+     */
+    where: RoadmapStepWhereUniqueInput
+  }
+
+  /**
+   * RoadmapStep findFirst
+   */
+  export type RoadmapStepFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoadmapStep
+     */
+    select?: RoadmapStepSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoadmapStep
+     */
+    omit?: RoadmapStepOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapStepInclude<ExtArgs> | null
+    /**
+     * Filter, which RoadmapStep to fetch.
+     */
+    where?: RoadmapStepWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RoadmapSteps to fetch.
+     */
+    orderBy?: RoadmapStepOrderByWithRelationInput | RoadmapStepOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RoadmapSteps.
+     */
+    cursor?: RoadmapStepWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RoadmapSteps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RoadmapSteps.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RoadmapSteps.
+     */
+    distinct?: RoadmapStepScalarFieldEnum | RoadmapStepScalarFieldEnum[]
+  }
+
+  /**
+   * RoadmapStep findFirstOrThrow
+   */
+  export type RoadmapStepFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoadmapStep
+     */
+    select?: RoadmapStepSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoadmapStep
+     */
+    omit?: RoadmapStepOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapStepInclude<ExtArgs> | null
+    /**
+     * Filter, which RoadmapStep to fetch.
+     */
+    where?: RoadmapStepWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RoadmapSteps to fetch.
+     */
+    orderBy?: RoadmapStepOrderByWithRelationInput | RoadmapStepOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RoadmapSteps.
+     */
+    cursor?: RoadmapStepWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RoadmapSteps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RoadmapSteps.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RoadmapSteps.
+     */
+    distinct?: RoadmapStepScalarFieldEnum | RoadmapStepScalarFieldEnum[]
+  }
+
+  /**
+   * RoadmapStep findMany
+   */
+  export type RoadmapStepFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoadmapStep
+     */
+    select?: RoadmapStepSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoadmapStep
+     */
+    omit?: RoadmapStepOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapStepInclude<ExtArgs> | null
+    /**
+     * Filter, which RoadmapSteps to fetch.
+     */
+    where?: RoadmapStepWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RoadmapSteps to fetch.
+     */
+    orderBy?: RoadmapStepOrderByWithRelationInput | RoadmapStepOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing RoadmapSteps.
+     */
+    cursor?: RoadmapStepWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RoadmapSteps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RoadmapSteps.
+     */
+    skip?: number
+    distinct?: RoadmapStepScalarFieldEnum | RoadmapStepScalarFieldEnum[]
+  }
+
+  /**
+   * RoadmapStep create
+   */
+  export type RoadmapStepCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoadmapStep
+     */
+    select?: RoadmapStepSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoadmapStep
+     */
+    omit?: RoadmapStepOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapStepInclude<ExtArgs> | null
+    /**
+     * The data needed to create a RoadmapStep.
+     */
+    data: XOR<RoadmapStepCreateInput, RoadmapStepUncheckedCreateInput>
+  }
+
+  /**
+   * RoadmapStep createMany
+   */
+  export type RoadmapStepCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many RoadmapSteps.
+     */
+    data: RoadmapStepCreateManyInput | RoadmapStepCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * RoadmapStep createManyAndReturn
+   */
+  export type RoadmapStepCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoadmapStep
+     */
+    select?: RoadmapStepSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoadmapStep
+     */
+    omit?: RoadmapStepOmit<ExtArgs> | null
+    /**
+     * The data used to create many RoadmapSteps.
+     */
+    data: RoadmapStepCreateManyInput | RoadmapStepCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapStepIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * RoadmapStep update
+   */
+  export type RoadmapStepUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoadmapStep
+     */
+    select?: RoadmapStepSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoadmapStep
+     */
+    omit?: RoadmapStepOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapStepInclude<ExtArgs> | null
+    /**
+     * The data needed to update a RoadmapStep.
+     */
+    data: XOR<RoadmapStepUpdateInput, RoadmapStepUncheckedUpdateInput>
+    /**
+     * Choose, which RoadmapStep to update.
+     */
+    where: RoadmapStepWhereUniqueInput
+  }
+
+  /**
+   * RoadmapStep updateMany
+   */
+  export type RoadmapStepUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update RoadmapSteps.
+     */
+    data: XOR<RoadmapStepUpdateManyMutationInput, RoadmapStepUncheckedUpdateManyInput>
+    /**
+     * Filter which RoadmapSteps to update
+     */
+    where?: RoadmapStepWhereInput
+    /**
+     * Limit how many RoadmapSteps to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * RoadmapStep updateManyAndReturn
+   */
+  export type RoadmapStepUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoadmapStep
+     */
+    select?: RoadmapStepSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoadmapStep
+     */
+    omit?: RoadmapStepOmit<ExtArgs> | null
+    /**
+     * The data used to update RoadmapSteps.
+     */
+    data: XOR<RoadmapStepUpdateManyMutationInput, RoadmapStepUncheckedUpdateManyInput>
+    /**
+     * Filter which RoadmapSteps to update
+     */
+    where?: RoadmapStepWhereInput
+    /**
+     * Limit how many RoadmapSteps to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapStepIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * RoadmapStep upsert
+   */
+  export type RoadmapStepUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoadmapStep
+     */
+    select?: RoadmapStepSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoadmapStep
+     */
+    omit?: RoadmapStepOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapStepInclude<ExtArgs> | null
+    /**
+     * The filter to search for the RoadmapStep to update in case it exists.
+     */
+    where: RoadmapStepWhereUniqueInput
+    /**
+     * In case the RoadmapStep found by the `where` argument doesn't exist, create a new RoadmapStep with this data.
+     */
+    create: XOR<RoadmapStepCreateInput, RoadmapStepUncheckedCreateInput>
+    /**
+     * In case the RoadmapStep was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RoadmapStepUpdateInput, RoadmapStepUncheckedUpdateInput>
+  }
+
+  /**
+   * RoadmapStep delete
+   */
+  export type RoadmapStepDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoadmapStep
+     */
+    select?: RoadmapStepSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoadmapStep
+     */
+    omit?: RoadmapStepOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapStepInclude<ExtArgs> | null
+    /**
+     * Filter which RoadmapStep to delete.
+     */
+    where: RoadmapStepWhereUniqueInput
+  }
+
+  /**
+   * RoadmapStep deleteMany
+   */
+  export type RoadmapStepDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RoadmapSteps to delete
+     */
+    where?: RoadmapStepWhereInput
+    /**
+     * Limit how many RoadmapSteps to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * RoadmapStep without action
+   */
+  export type RoadmapStepDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoadmapStep
+     */
+    select?: RoadmapStepSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoadmapStep
+     */
+    omit?: RoadmapStepOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoadmapStepInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -8359,6 +10949,33 @@ export namespace Prisma {
   };
 
   export type NoteTagScalarFieldEnum = (typeof NoteTagScalarFieldEnum)[keyof typeof NoteTagScalarFieldEnum]
+
+
+  export const RoadmapScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    description: 'description',
+    desktopId: 'desktopId',
+    userId: 'userId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type RoadmapScalarFieldEnum = (typeof RoadmapScalarFieldEnum)[keyof typeof RoadmapScalarFieldEnum]
+
+
+  export const RoadmapStepScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    description: 'description',
+    order: 'order',
+    isCompleted: 'isCompleted',
+    roadmapId: 'roadmapId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type RoadmapStepScalarFieldEnum = (typeof RoadmapStepScalarFieldEnum)[keyof typeof RoadmapStepScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -8471,6 +11088,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     desktops?: DesktopListRelationFilter
     notes?: NoteListRelationFilter
+    roadmaps?: RoadmapListRelationFilter
     settings?: XOR<UserSettingsNullableScalarRelationFilter, UserSettingsWhereInput> | null
   }
 
@@ -8486,6 +11104,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     desktops?: DesktopOrderByRelationAggregateInput
     notes?: NoteOrderByRelationAggregateInput
+    roadmaps?: RoadmapOrderByRelationAggregateInput
     settings?: UserSettingsOrderByWithRelationInput
   }
 
@@ -8504,6 +11123,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     desktops?: DesktopListRelationFilter
     notes?: NoteListRelationFilter
+    roadmaps?: RoadmapListRelationFilter
     settings?: XOR<UserSettingsNullableScalarRelationFilter, UserSettingsWhereInput> | null
   }, "id" | "username" | "email" | "auth0Id">
 
@@ -8613,6 +11233,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Desktop"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     notes?: NoteListRelationFilter
+    roadmaps?: RoadmapListRelationFilter
   }
 
   export type DesktopOrderByWithRelationInput = {
@@ -8624,6 +11245,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
     notes?: NoteOrderByRelationAggregateInput
+    roadmaps?: RoadmapOrderByRelationAggregateInput
   }
 
   export type DesktopWhereUniqueInput = Prisma.AtLeast<{
@@ -8638,6 +11260,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Desktop"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     notes?: NoteListRelationFilter
+    roadmaps?: RoadmapListRelationFilter
   }, "id">
 
   export type DesktopOrderByWithAggregationInput = {
@@ -8852,6 +11475,151 @@ export namespace Prisma {
     tagId?: IntWithAggregatesFilter<"NoteTag"> | number
   }
 
+  export type RoadmapWhereInput = {
+    AND?: RoadmapWhereInput | RoadmapWhereInput[]
+    OR?: RoadmapWhereInput[]
+    NOT?: RoadmapWhereInput | RoadmapWhereInput[]
+    id?: IntFilter<"Roadmap"> | number
+    title?: StringFilter<"Roadmap"> | string
+    description?: StringNullableFilter<"Roadmap"> | string | null
+    desktopId?: IntFilter<"Roadmap"> | number
+    userId?: IntFilter<"Roadmap"> | number
+    createdAt?: DateTimeFilter<"Roadmap"> | Date | string
+    updatedAt?: DateTimeFilter<"Roadmap"> | Date | string
+    desktop?: XOR<DesktopScalarRelationFilter, DesktopWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    steps?: RoadmapStepListRelationFilter
+  }
+
+  export type RoadmapOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    desktopId?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    desktop?: DesktopOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+    steps?: RoadmapStepOrderByRelationAggregateInput
+  }
+
+  export type RoadmapWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: RoadmapWhereInput | RoadmapWhereInput[]
+    OR?: RoadmapWhereInput[]
+    NOT?: RoadmapWhereInput | RoadmapWhereInput[]
+    title?: StringFilter<"Roadmap"> | string
+    description?: StringNullableFilter<"Roadmap"> | string | null
+    desktopId?: IntFilter<"Roadmap"> | number
+    userId?: IntFilter<"Roadmap"> | number
+    createdAt?: DateTimeFilter<"Roadmap"> | Date | string
+    updatedAt?: DateTimeFilter<"Roadmap"> | Date | string
+    desktop?: XOR<DesktopScalarRelationFilter, DesktopWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    steps?: RoadmapStepListRelationFilter
+  }, "id">
+
+  export type RoadmapOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    desktopId?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: RoadmapCountOrderByAggregateInput
+    _avg?: RoadmapAvgOrderByAggregateInput
+    _max?: RoadmapMaxOrderByAggregateInput
+    _min?: RoadmapMinOrderByAggregateInput
+    _sum?: RoadmapSumOrderByAggregateInput
+  }
+
+  export type RoadmapScalarWhereWithAggregatesInput = {
+    AND?: RoadmapScalarWhereWithAggregatesInput | RoadmapScalarWhereWithAggregatesInput[]
+    OR?: RoadmapScalarWhereWithAggregatesInput[]
+    NOT?: RoadmapScalarWhereWithAggregatesInput | RoadmapScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Roadmap"> | number
+    title?: StringWithAggregatesFilter<"Roadmap"> | string
+    description?: StringNullableWithAggregatesFilter<"Roadmap"> | string | null
+    desktopId?: IntWithAggregatesFilter<"Roadmap"> | number
+    userId?: IntWithAggregatesFilter<"Roadmap"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Roadmap"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Roadmap"> | Date | string
+  }
+
+  export type RoadmapStepWhereInput = {
+    AND?: RoadmapStepWhereInput | RoadmapStepWhereInput[]
+    OR?: RoadmapStepWhereInput[]
+    NOT?: RoadmapStepWhereInput | RoadmapStepWhereInput[]
+    id?: IntFilter<"RoadmapStep"> | number
+    title?: StringFilter<"RoadmapStep"> | string
+    description?: StringNullableFilter<"RoadmapStep"> | string | null
+    order?: IntFilter<"RoadmapStep"> | number
+    isCompleted?: BoolFilter<"RoadmapStep"> | boolean
+    roadmapId?: IntFilter<"RoadmapStep"> | number
+    createdAt?: DateTimeFilter<"RoadmapStep"> | Date | string
+    updatedAt?: DateTimeFilter<"RoadmapStep"> | Date | string
+    roadmap?: XOR<RoadmapScalarRelationFilter, RoadmapWhereInput>
+  }
+
+  export type RoadmapStepOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    order?: SortOrder
+    isCompleted?: SortOrder
+    roadmapId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    roadmap?: RoadmapOrderByWithRelationInput
+  }
+
+  export type RoadmapStepWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: RoadmapStepWhereInput | RoadmapStepWhereInput[]
+    OR?: RoadmapStepWhereInput[]
+    NOT?: RoadmapStepWhereInput | RoadmapStepWhereInput[]
+    title?: StringFilter<"RoadmapStep"> | string
+    description?: StringNullableFilter<"RoadmapStep"> | string | null
+    order?: IntFilter<"RoadmapStep"> | number
+    isCompleted?: BoolFilter<"RoadmapStep"> | boolean
+    roadmapId?: IntFilter<"RoadmapStep"> | number
+    createdAt?: DateTimeFilter<"RoadmapStep"> | Date | string
+    updatedAt?: DateTimeFilter<"RoadmapStep"> | Date | string
+    roadmap?: XOR<RoadmapScalarRelationFilter, RoadmapWhereInput>
+  }, "id">
+
+  export type RoadmapStepOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    order?: SortOrder
+    isCompleted?: SortOrder
+    roadmapId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: RoadmapStepCountOrderByAggregateInput
+    _avg?: RoadmapStepAvgOrderByAggregateInput
+    _max?: RoadmapStepMaxOrderByAggregateInput
+    _min?: RoadmapStepMinOrderByAggregateInput
+    _sum?: RoadmapStepSumOrderByAggregateInput
+  }
+
+  export type RoadmapStepScalarWhereWithAggregatesInput = {
+    AND?: RoadmapStepScalarWhereWithAggregatesInput | RoadmapStepScalarWhereWithAggregatesInput[]
+    OR?: RoadmapStepScalarWhereWithAggregatesInput[]
+    NOT?: RoadmapStepScalarWhereWithAggregatesInput | RoadmapStepScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"RoadmapStep"> | number
+    title?: StringWithAggregatesFilter<"RoadmapStep"> | string
+    description?: StringNullableWithAggregatesFilter<"RoadmapStep"> | string | null
+    order?: IntWithAggregatesFilter<"RoadmapStep"> | number
+    isCompleted?: BoolWithAggregatesFilter<"RoadmapStep"> | boolean
+    roadmapId?: IntWithAggregatesFilter<"RoadmapStep"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"RoadmapStep"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"RoadmapStep"> | Date | string
+  }
+
   export type UserCreateInput = {
     username: string
     email: string
@@ -8863,6 +11631,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     desktops?: DesktopCreateNestedManyWithoutUserInput
     notes?: NoteCreateNestedManyWithoutUserInput
+    roadmaps?: RoadmapCreateNestedManyWithoutUserInput
     settings?: UserSettingsCreateNestedOneWithoutUserInput
   }
 
@@ -8878,6 +11647,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     desktops?: DesktopUncheckedCreateNestedManyWithoutUserInput
     notes?: NoteUncheckedCreateNestedManyWithoutUserInput
+    roadmaps?: RoadmapUncheckedCreateNestedManyWithoutUserInput
     settings?: UserSettingsUncheckedCreateNestedOneWithoutUserInput
   }
 
@@ -8892,6 +11662,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     desktops?: DesktopUpdateManyWithoutUserNestedInput
     notes?: NoteUpdateManyWithoutUserNestedInput
+    roadmaps?: RoadmapUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUpdateOneWithoutUserNestedInput
   }
 
@@ -8907,6 +11678,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     desktops?: DesktopUncheckedUpdateManyWithoutUserNestedInput
     notes?: NoteUncheckedUpdateManyWithoutUserNestedInput
+    roadmaps?: RoadmapUncheckedUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUncheckedUpdateOneWithoutUserNestedInput
   }
 
@@ -9011,6 +11783,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutDesktopsInput
     notes?: NoteCreateNestedManyWithoutDesktopInput
+    roadmaps?: RoadmapCreateNestedManyWithoutDesktopInput
   }
 
   export type DesktopUncheckedCreateInput = {
@@ -9021,6 +11794,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     notes?: NoteUncheckedCreateNestedManyWithoutDesktopInput
+    roadmaps?: RoadmapUncheckedCreateNestedManyWithoutDesktopInput
   }
 
   export type DesktopUpdateInput = {
@@ -9030,6 +11804,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutDesktopsNestedInput
     notes?: NoteUpdateManyWithoutDesktopNestedInput
+    roadmaps?: RoadmapUpdateManyWithoutDesktopNestedInput
   }
 
   export type DesktopUncheckedUpdateInput = {
@@ -9040,6 +11815,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     notes?: NoteUncheckedUpdateManyWithoutDesktopNestedInput
+    roadmaps?: RoadmapUncheckedUpdateManyWithoutDesktopNestedInput
   }
 
   export type DesktopCreateManyInput = {
@@ -9238,6 +12014,148 @@ export namespace Prisma {
     tagId?: IntFieldUpdateOperationsInput | number
   }
 
+  export type RoadmapCreateInput = {
+    title: string
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    desktop: DesktopCreateNestedOneWithoutRoadmapsInput
+    user: UserCreateNestedOneWithoutRoadmapsInput
+    steps?: RoadmapStepCreateNestedManyWithoutRoadmapInput
+  }
+
+  export type RoadmapUncheckedCreateInput = {
+    id?: number
+    title: string
+    description?: string | null
+    desktopId: number
+    userId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    steps?: RoadmapStepUncheckedCreateNestedManyWithoutRoadmapInput
+  }
+
+  export type RoadmapUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    desktop?: DesktopUpdateOneRequiredWithoutRoadmapsNestedInput
+    user?: UserUpdateOneRequiredWithoutRoadmapsNestedInput
+    steps?: RoadmapStepUpdateManyWithoutRoadmapNestedInput
+  }
+
+  export type RoadmapUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    desktopId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    steps?: RoadmapStepUncheckedUpdateManyWithoutRoadmapNestedInput
+  }
+
+  export type RoadmapCreateManyInput = {
+    id?: number
+    title: string
+    description?: string | null
+    desktopId: number
+    userId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RoadmapUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RoadmapUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    desktopId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RoadmapStepCreateInput = {
+    title: string
+    description?: string | null
+    order: number
+    isCompleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    roadmap: RoadmapCreateNestedOneWithoutStepsInput
+  }
+
+  export type RoadmapStepUncheckedCreateInput = {
+    id?: number
+    title: string
+    description?: string | null
+    order: number
+    isCompleted?: boolean
+    roadmapId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RoadmapStepUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    isCompleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    roadmap?: RoadmapUpdateOneRequiredWithoutStepsNestedInput
+  }
+
+  export type RoadmapStepUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    isCompleted?: BoolFieldUpdateOperationsInput | boolean
+    roadmapId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RoadmapStepCreateManyInput = {
+    id?: number
+    title: string
+    description?: string | null
+    order: number
+    isCompleted?: boolean
+    roadmapId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RoadmapStepUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    isCompleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RoadmapStepUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    isCompleted?: BoolFieldUpdateOperationsInput | boolean
+    roadmapId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -9302,6 +12220,12 @@ export namespace Prisma {
     none?: NoteWhereInput
   }
 
+  export type RoadmapListRelationFilter = {
+    every?: RoadmapWhereInput
+    some?: RoadmapWhereInput
+    none?: RoadmapWhereInput
+  }
+
   export type UserSettingsNullableScalarRelationFilter = {
     is?: UserSettingsWhereInput | null
     isNot?: UserSettingsWhereInput | null
@@ -9317,6 +12241,10 @@ export namespace Prisma {
   }
 
   export type NoteOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type RoadmapOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -9659,6 +12587,108 @@ export namespace Prisma {
     tagId?: SortOrder
   }
 
+  export type RoadmapStepListRelationFilter = {
+    every?: RoadmapStepWhereInput
+    some?: RoadmapStepWhereInput
+    none?: RoadmapStepWhereInput
+  }
+
+  export type RoadmapStepOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type RoadmapCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    desktopId?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RoadmapAvgOrderByAggregateInput = {
+    id?: SortOrder
+    desktopId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type RoadmapMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    desktopId?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RoadmapMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    desktopId?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RoadmapSumOrderByAggregateInput = {
+    id?: SortOrder
+    desktopId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type RoadmapScalarRelationFilter = {
+    is?: RoadmapWhereInput
+    isNot?: RoadmapWhereInput
+  }
+
+  export type RoadmapStepCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    order?: SortOrder
+    isCompleted?: SortOrder
+    roadmapId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RoadmapStepAvgOrderByAggregateInput = {
+    id?: SortOrder
+    order?: SortOrder
+    roadmapId?: SortOrder
+  }
+
+  export type RoadmapStepMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    order?: SortOrder
+    isCompleted?: SortOrder
+    roadmapId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RoadmapStepMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    order?: SortOrder
+    isCompleted?: SortOrder
+    roadmapId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RoadmapStepSumOrderByAggregateInput = {
+    id?: SortOrder
+    order?: SortOrder
+    roadmapId?: SortOrder
+  }
+
   export type DesktopCreateNestedManyWithoutUserInput = {
     create?: XOR<DesktopCreateWithoutUserInput, DesktopUncheckedCreateWithoutUserInput> | DesktopCreateWithoutUserInput[] | DesktopUncheckedCreateWithoutUserInput[]
     connectOrCreate?: DesktopCreateOrConnectWithoutUserInput | DesktopCreateOrConnectWithoutUserInput[]
@@ -9671,6 +12701,13 @@ export namespace Prisma {
     connectOrCreate?: NoteCreateOrConnectWithoutUserInput | NoteCreateOrConnectWithoutUserInput[]
     createMany?: NoteCreateManyUserInputEnvelope
     connect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
+  }
+
+  export type RoadmapCreateNestedManyWithoutUserInput = {
+    create?: XOR<RoadmapCreateWithoutUserInput, RoadmapUncheckedCreateWithoutUserInput> | RoadmapCreateWithoutUserInput[] | RoadmapUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RoadmapCreateOrConnectWithoutUserInput | RoadmapCreateOrConnectWithoutUserInput[]
+    createMany?: RoadmapCreateManyUserInputEnvelope
+    connect?: RoadmapWhereUniqueInput | RoadmapWhereUniqueInput[]
   }
 
   export type UserSettingsCreateNestedOneWithoutUserInput = {
@@ -9691,6 +12728,13 @@ export namespace Prisma {
     connectOrCreate?: NoteCreateOrConnectWithoutUserInput | NoteCreateOrConnectWithoutUserInput[]
     createMany?: NoteCreateManyUserInputEnvelope
     connect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
+  }
+
+  export type RoadmapUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<RoadmapCreateWithoutUserInput, RoadmapUncheckedCreateWithoutUserInput> | RoadmapCreateWithoutUserInput[] | RoadmapUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RoadmapCreateOrConnectWithoutUserInput | RoadmapCreateOrConnectWithoutUserInput[]
+    createMany?: RoadmapCreateManyUserInputEnvelope
+    connect?: RoadmapWhereUniqueInput | RoadmapWhereUniqueInput[]
   }
 
   export type UserSettingsUncheckedCreateNestedOneWithoutUserInput = {
@@ -9739,6 +12783,20 @@ export namespace Prisma {
     deleteMany?: NoteScalarWhereInput | NoteScalarWhereInput[]
   }
 
+  export type RoadmapUpdateManyWithoutUserNestedInput = {
+    create?: XOR<RoadmapCreateWithoutUserInput, RoadmapUncheckedCreateWithoutUserInput> | RoadmapCreateWithoutUserInput[] | RoadmapUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RoadmapCreateOrConnectWithoutUserInput | RoadmapCreateOrConnectWithoutUserInput[]
+    upsert?: RoadmapUpsertWithWhereUniqueWithoutUserInput | RoadmapUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: RoadmapCreateManyUserInputEnvelope
+    set?: RoadmapWhereUniqueInput | RoadmapWhereUniqueInput[]
+    disconnect?: RoadmapWhereUniqueInput | RoadmapWhereUniqueInput[]
+    delete?: RoadmapWhereUniqueInput | RoadmapWhereUniqueInput[]
+    connect?: RoadmapWhereUniqueInput | RoadmapWhereUniqueInput[]
+    update?: RoadmapUpdateWithWhereUniqueWithoutUserInput | RoadmapUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: RoadmapUpdateManyWithWhereWithoutUserInput | RoadmapUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: RoadmapScalarWhereInput | RoadmapScalarWhereInput[]
+  }
+
   export type UserSettingsUpdateOneWithoutUserNestedInput = {
     create?: XOR<UserSettingsCreateWithoutUserInput, UserSettingsUncheckedCreateWithoutUserInput>
     connectOrCreate?: UserSettingsCreateOrConnectWithoutUserInput
@@ -9785,6 +12843,20 @@ export namespace Prisma {
     deleteMany?: NoteScalarWhereInput | NoteScalarWhereInput[]
   }
 
+  export type RoadmapUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<RoadmapCreateWithoutUserInput, RoadmapUncheckedCreateWithoutUserInput> | RoadmapCreateWithoutUserInput[] | RoadmapUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RoadmapCreateOrConnectWithoutUserInput | RoadmapCreateOrConnectWithoutUserInput[]
+    upsert?: RoadmapUpsertWithWhereUniqueWithoutUserInput | RoadmapUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: RoadmapCreateManyUserInputEnvelope
+    set?: RoadmapWhereUniqueInput | RoadmapWhereUniqueInput[]
+    disconnect?: RoadmapWhereUniqueInput | RoadmapWhereUniqueInput[]
+    delete?: RoadmapWhereUniqueInput | RoadmapWhereUniqueInput[]
+    connect?: RoadmapWhereUniqueInput | RoadmapWhereUniqueInput[]
+    update?: RoadmapUpdateWithWhereUniqueWithoutUserInput | RoadmapUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: RoadmapUpdateManyWithWhereWithoutUserInput | RoadmapUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: RoadmapScalarWhereInput | RoadmapScalarWhereInput[]
+  }
+
   export type UserSettingsUncheckedUpdateOneWithoutUserNestedInput = {
     create?: XOR<UserSettingsCreateWithoutUserInput, UserSettingsUncheckedCreateWithoutUserInput>
     connectOrCreate?: UserSettingsCreateOrConnectWithoutUserInput
@@ -9822,11 +12894,25 @@ export namespace Prisma {
     connect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
   }
 
+  export type RoadmapCreateNestedManyWithoutDesktopInput = {
+    create?: XOR<RoadmapCreateWithoutDesktopInput, RoadmapUncheckedCreateWithoutDesktopInput> | RoadmapCreateWithoutDesktopInput[] | RoadmapUncheckedCreateWithoutDesktopInput[]
+    connectOrCreate?: RoadmapCreateOrConnectWithoutDesktopInput | RoadmapCreateOrConnectWithoutDesktopInput[]
+    createMany?: RoadmapCreateManyDesktopInputEnvelope
+    connect?: RoadmapWhereUniqueInput | RoadmapWhereUniqueInput[]
+  }
+
   export type NoteUncheckedCreateNestedManyWithoutDesktopInput = {
     create?: XOR<NoteCreateWithoutDesktopInput, NoteUncheckedCreateWithoutDesktopInput> | NoteCreateWithoutDesktopInput[] | NoteUncheckedCreateWithoutDesktopInput[]
     connectOrCreate?: NoteCreateOrConnectWithoutDesktopInput | NoteCreateOrConnectWithoutDesktopInput[]
     createMany?: NoteCreateManyDesktopInputEnvelope
     connect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
+  }
+
+  export type RoadmapUncheckedCreateNestedManyWithoutDesktopInput = {
+    create?: XOR<RoadmapCreateWithoutDesktopInput, RoadmapUncheckedCreateWithoutDesktopInput> | RoadmapCreateWithoutDesktopInput[] | RoadmapUncheckedCreateWithoutDesktopInput[]
+    connectOrCreate?: RoadmapCreateOrConnectWithoutDesktopInput | RoadmapCreateOrConnectWithoutDesktopInput[]
+    createMany?: RoadmapCreateManyDesktopInputEnvelope
+    connect?: RoadmapWhereUniqueInput | RoadmapWhereUniqueInput[]
   }
 
   export type UserUpdateOneRequiredWithoutDesktopsNestedInput = {
@@ -9851,6 +12937,20 @@ export namespace Prisma {
     deleteMany?: NoteScalarWhereInput | NoteScalarWhereInput[]
   }
 
+  export type RoadmapUpdateManyWithoutDesktopNestedInput = {
+    create?: XOR<RoadmapCreateWithoutDesktopInput, RoadmapUncheckedCreateWithoutDesktopInput> | RoadmapCreateWithoutDesktopInput[] | RoadmapUncheckedCreateWithoutDesktopInput[]
+    connectOrCreate?: RoadmapCreateOrConnectWithoutDesktopInput | RoadmapCreateOrConnectWithoutDesktopInput[]
+    upsert?: RoadmapUpsertWithWhereUniqueWithoutDesktopInput | RoadmapUpsertWithWhereUniqueWithoutDesktopInput[]
+    createMany?: RoadmapCreateManyDesktopInputEnvelope
+    set?: RoadmapWhereUniqueInput | RoadmapWhereUniqueInput[]
+    disconnect?: RoadmapWhereUniqueInput | RoadmapWhereUniqueInput[]
+    delete?: RoadmapWhereUniqueInput | RoadmapWhereUniqueInput[]
+    connect?: RoadmapWhereUniqueInput | RoadmapWhereUniqueInput[]
+    update?: RoadmapUpdateWithWhereUniqueWithoutDesktopInput | RoadmapUpdateWithWhereUniqueWithoutDesktopInput[]
+    updateMany?: RoadmapUpdateManyWithWhereWithoutDesktopInput | RoadmapUpdateManyWithWhereWithoutDesktopInput[]
+    deleteMany?: RoadmapScalarWhereInput | RoadmapScalarWhereInput[]
+  }
+
   export type NoteUncheckedUpdateManyWithoutDesktopNestedInput = {
     create?: XOR<NoteCreateWithoutDesktopInput, NoteUncheckedCreateWithoutDesktopInput> | NoteCreateWithoutDesktopInput[] | NoteUncheckedCreateWithoutDesktopInput[]
     connectOrCreate?: NoteCreateOrConnectWithoutDesktopInput | NoteCreateOrConnectWithoutDesktopInput[]
@@ -9863,6 +12963,20 @@ export namespace Prisma {
     update?: NoteUpdateWithWhereUniqueWithoutDesktopInput | NoteUpdateWithWhereUniqueWithoutDesktopInput[]
     updateMany?: NoteUpdateManyWithWhereWithoutDesktopInput | NoteUpdateManyWithWhereWithoutDesktopInput[]
     deleteMany?: NoteScalarWhereInput | NoteScalarWhereInput[]
+  }
+
+  export type RoadmapUncheckedUpdateManyWithoutDesktopNestedInput = {
+    create?: XOR<RoadmapCreateWithoutDesktopInput, RoadmapUncheckedCreateWithoutDesktopInput> | RoadmapCreateWithoutDesktopInput[] | RoadmapUncheckedCreateWithoutDesktopInput[]
+    connectOrCreate?: RoadmapCreateOrConnectWithoutDesktopInput | RoadmapCreateOrConnectWithoutDesktopInput[]
+    upsert?: RoadmapUpsertWithWhereUniqueWithoutDesktopInput | RoadmapUpsertWithWhereUniqueWithoutDesktopInput[]
+    createMany?: RoadmapCreateManyDesktopInputEnvelope
+    set?: RoadmapWhereUniqueInput | RoadmapWhereUniqueInput[]
+    disconnect?: RoadmapWhereUniqueInput | RoadmapWhereUniqueInput[]
+    delete?: RoadmapWhereUniqueInput | RoadmapWhereUniqueInput[]
+    connect?: RoadmapWhereUniqueInput | RoadmapWhereUniqueInput[]
+    update?: RoadmapUpdateWithWhereUniqueWithoutDesktopInput | RoadmapUpdateWithWhereUniqueWithoutDesktopInput[]
+    updateMany?: RoadmapUpdateManyWithWhereWithoutDesktopInput | RoadmapUpdateManyWithWhereWithoutDesktopInput[]
+    deleteMany?: RoadmapScalarWhereInput | RoadmapScalarWhereInput[]
   }
 
   export type DesktopCreateNestedOneWithoutNotesInput = {
@@ -10007,6 +13121,90 @@ export namespace Prisma {
     upsert?: TagUpsertWithoutNotesInput
     connect?: TagWhereUniqueInput
     update?: XOR<XOR<TagUpdateToOneWithWhereWithoutNotesInput, TagUpdateWithoutNotesInput>, TagUncheckedUpdateWithoutNotesInput>
+  }
+
+  export type DesktopCreateNestedOneWithoutRoadmapsInput = {
+    create?: XOR<DesktopCreateWithoutRoadmapsInput, DesktopUncheckedCreateWithoutRoadmapsInput>
+    connectOrCreate?: DesktopCreateOrConnectWithoutRoadmapsInput
+    connect?: DesktopWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutRoadmapsInput = {
+    create?: XOR<UserCreateWithoutRoadmapsInput, UserUncheckedCreateWithoutRoadmapsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRoadmapsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type RoadmapStepCreateNestedManyWithoutRoadmapInput = {
+    create?: XOR<RoadmapStepCreateWithoutRoadmapInput, RoadmapStepUncheckedCreateWithoutRoadmapInput> | RoadmapStepCreateWithoutRoadmapInput[] | RoadmapStepUncheckedCreateWithoutRoadmapInput[]
+    connectOrCreate?: RoadmapStepCreateOrConnectWithoutRoadmapInput | RoadmapStepCreateOrConnectWithoutRoadmapInput[]
+    createMany?: RoadmapStepCreateManyRoadmapInputEnvelope
+    connect?: RoadmapStepWhereUniqueInput | RoadmapStepWhereUniqueInput[]
+  }
+
+  export type RoadmapStepUncheckedCreateNestedManyWithoutRoadmapInput = {
+    create?: XOR<RoadmapStepCreateWithoutRoadmapInput, RoadmapStepUncheckedCreateWithoutRoadmapInput> | RoadmapStepCreateWithoutRoadmapInput[] | RoadmapStepUncheckedCreateWithoutRoadmapInput[]
+    connectOrCreate?: RoadmapStepCreateOrConnectWithoutRoadmapInput | RoadmapStepCreateOrConnectWithoutRoadmapInput[]
+    createMany?: RoadmapStepCreateManyRoadmapInputEnvelope
+    connect?: RoadmapStepWhereUniqueInput | RoadmapStepWhereUniqueInput[]
+  }
+
+  export type DesktopUpdateOneRequiredWithoutRoadmapsNestedInput = {
+    create?: XOR<DesktopCreateWithoutRoadmapsInput, DesktopUncheckedCreateWithoutRoadmapsInput>
+    connectOrCreate?: DesktopCreateOrConnectWithoutRoadmapsInput
+    upsert?: DesktopUpsertWithoutRoadmapsInput
+    connect?: DesktopWhereUniqueInput
+    update?: XOR<XOR<DesktopUpdateToOneWithWhereWithoutRoadmapsInput, DesktopUpdateWithoutRoadmapsInput>, DesktopUncheckedUpdateWithoutRoadmapsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutRoadmapsNestedInput = {
+    create?: XOR<UserCreateWithoutRoadmapsInput, UserUncheckedCreateWithoutRoadmapsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRoadmapsInput
+    upsert?: UserUpsertWithoutRoadmapsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutRoadmapsInput, UserUpdateWithoutRoadmapsInput>, UserUncheckedUpdateWithoutRoadmapsInput>
+  }
+
+  export type RoadmapStepUpdateManyWithoutRoadmapNestedInput = {
+    create?: XOR<RoadmapStepCreateWithoutRoadmapInput, RoadmapStepUncheckedCreateWithoutRoadmapInput> | RoadmapStepCreateWithoutRoadmapInput[] | RoadmapStepUncheckedCreateWithoutRoadmapInput[]
+    connectOrCreate?: RoadmapStepCreateOrConnectWithoutRoadmapInput | RoadmapStepCreateOrConnectWithoutRoadmapInput[]
+    upsert?: RoadmapStepUpsertWithWhereUniqueWithoutRoadmapInput | RoadmapStepUpsertWithWhereUniqueWithoutRoadmapInput[]
+    createMany?: RoadmapStepCreateManyRoadmapInputEnvelope
+    set?: RoadmapStepWhereUniqueInput | RoadmapStepWhereUniqueInput[]
+    disconnect?: RoadmapStepWhereUniqueInput | RoadmapStepWhereUniqueInput[]
+    delete?: RoadmapStepWhereUniqueInput | RoadmapStepWhereUniqueInput[]
+    connect?: RoadmapStepWhereUniqueInput | RoadmapStepWhereUniqueInput[]
+    update?: RoadmapStepUpdateWithWhereUniqueWithoutRoadmapInput | RoadmapStepUpdateWithWhereUniqueWithoutRoadmapInput[]
+    updateMany?: RoadmapStepUpdateManyWithWhereWithoutRoadmapInput | RoadmapStepUpdateManyWithWhereWithoutRoadmapInput[]
+    deleteMany?: RoadmapStepScalarWhereInput | RoadmapStepScalarWhereInput[]
+  }
+
+  export type RoadmapStepUncheckedUpdateManyWithoutRoadmapNestedInput = {
+    create?: XOR<RoadmapStepCreateWithoutRoadmapInput, RoadmapStepUncheckedCreateWithoutRoadmapInput> | RoadmapStepCreateWithoutRoadmapInput[] | RoadmapStepUncheckedCreateWithoutRoadmapInput[]
+    connectOrCreate?: RoadmapStepCreateOrConnectWithoutRoadmapInput | RoadmapStepCreateOrConnectWithoutRoadmapInput[]
+    upsert?: RoadmapStepUpsertWithWhereUniqueWithoutRoadmapInput | RoadmapStepUpsertWithWhereUniqueWithoutRoadmapInput[]
+    createMany?: RoadmapStepCreateManyRoadmapInputEnvelope
+    set?: RoadmapStepWhereUniqueInput | RoadmapStepWhereUniqueInput[]
+    disconnect?: RoadmapStepWhereUniqueInput | RoadmapStepWhereUniqueInput[]
+    delete?: RoadmapStepWhereUniqueInput | RoadmapStepWhereUniqueInput[]
+    connect?: RoadmapStepWhereUniqueInput | RoadmapStepWhereUniqueInput[]
+    update?: RoadmapStepUpdateWithWhereUniqueWithoutRoadmapInput | RoadmapStepUpdateWithWhereUniqueWithoutRoadmapInput[]
+    updateMany?: RoadmapStepUpdateManyWithWhereWithoutRoadmapInput | RoadmapStepUpdateManyWithWhereWithoutRoadmapInput[]
+    deleteMany?: RoadmapStepScalarWhereInput | RoadmapStepScalarWhereInput[]
+  }
+
+  export type RoadmapCreateNestedOneWithoutStepsInput = {
+    create?: XOR<RoadmapCreateWithoutStepsInput, RoadmapUncheckedCreateWithoutStepsInput>
+    connectOrCreate?: RoadmapCreateOrConnectWithoutStepsInput
+    connect?: RoadmapWhereUniqueInput
+  }
+
+  export type RoadmapUpdateOneRequiredWithoutStepsNestedInput = {
+    create?: XOR<RoadmapCreateWithoutStepsInput, RoadmapUncheckedCreateWithoutStepsInput>
+    connectOrCreate?: RoadmapCreateOrConnectWithoutStepsInput
+    upsert?: RoadmapUpsertWithoutStepsInput
+    connect?: RoadmapWhereUniqueInput
+    update?: XOR<XOR<RoadmapUpdateToOneWithWhereWithoutStepsInput, RoadmapUpdateWithoutStepsInput>, RoadmapUncheckedUpdateWithoutStepsInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -10164,6 +13362,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     notes?: NoteCreateNestedManyWithoutDesktopInput
+    roadmaps?: RoadmapCreateNestedManyWithoutDesktopInput
   }
 
   export type DesktopUncheckedCreateWithoutUserInput = {
@@ -10173,6 +13372,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     notes?: NoteUncheckedCreateNestedManyWithoutDesktopInput
+    roadmaps?: RoadmapUncheckedCreateNestedManyWithoutDesktopInput
   }
 
   export type DesktopCreateOrConnectWithoutUserInput = {
@@ -10213,6 +13413,35 @@ export namespace Prisma {
 
   export type NoteCreateManyUserInputEnvelope = {
     data: NoteCreateManyUserInput | NoteCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type RoadmapCreateWithoutUserInput = {
+    title: string
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    desktop: DesktopCreateNestedOneWithoutRoadmapsInput
+    steps?: RoadmapStepCreateNestedManyWithoutRoadmapInput
+  }
+
+  export type RoadmapUncheckedCreateWithoutUserInput = {
+    id?: number
+    title: string
+    description?: string | null
+    desktopId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    steps?: RoadmapStepUncheckedCreateNestedManyWithoutRoadmapInput
+  }
+
+  export type RoadmapCreateOrConnectWithoutUserInput = {
+    where: RoadmapWhereUniqueInput
+    create: XOR<RoadmapCreateWithoutUserInput, RoadmapUncheckedCreateWithoutUserInput>
+  }
+
+  export type RoadmapCreateManyUserInputEnvelope = {
+    data: RoadmapCreateManyUserInput | RoadmapCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -10294,6 +13523,35 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Note"> | Date | string
   }
 
+  export type RoadmapUpsertWithWhereUniqueWithoutUserInput = {
+    where: RoadmapWhereUniqueInput
+    update: XOR<RoadmapUpdateWithoutUserInput, RoadmapUncheckedUpdateWithoutUserInput>
+    create: XOR<RoadmapCreateWithoutUserInput, RoadmapUncheckedCreateWithoutUserInput>
+  }
+
+  export type RoadmapUpdateWithWhereUniqueWithoutUserInput = {
+    where: RoadmapWhereUniqueInput
+    data: XOR<RoadmapUpdateWithoutUserInput, RoadmapUncheckedUpdateWithoutUserInput>
+  }
+
+  export type RoadmapUpdateManyWithWhereWithoutUserInput = {
+    where: RoadmapScalarWhereInput
+    data: XOR<RoadmapUpdateManyMutationInput, RoadmapUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type RoadmapScalarWhereInput = {
+    AND?: RoadmapScalarWhereInput | RoadmapScalarWhereInput[]
+    OR?: RoadmapScalarWhereInput[]
+    NOT?: RoadmapScalarWhereInput | RoadmapScalarWhereInput[]
+    id?: IntFilter<"Roadmap"> | number
+    title?: StringFilter<"Roadmap"> | string
+    description?: StringNullableFilter<"Roadmap"> | string | null
+    desktopId?: IntFilter<"Roadmap"> | number
+    userId?: IntFilter<"Roadmap"> | number
+    createdAt?: DateTimeFilter<"Roadmap"> | Date | string
+    updatedAt?: DateTimeFilter<"Roadmap"> | Date | string
+  }
+
   export type UserSettingsUpsertWithoutUserInput = {
     update: XOR<UserSettingsUpdateWithoutUserInput, UserSettingsUncheckedUpdateWithoutUserInput>
     create: XOR<UserSettingsCreateWithoutUserInput, UserSettingsUncheckedCreateWithoutUserInput>
@@ -10331,6 +13589,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     desktops?: DesktopCreateNestedManyWithoutUserInput
     notes?: NoteCreateNestedManyWithoutUserInput
+    roadmaps?: RoadmapCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSettingsInput = {
@@ -10345,6 +13604,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     desktops?: DesktopUncheckedCreateNestedManyWithoutUserInput
     notes?: NoteUncheckedCreateNestedManyWithoutUserInput
+    roadmaps?: RoadmapUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSettingsInput = {
@@ -10374,6 +13634,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     desktops?: DesktopUpdateManyWithoutUserNestedInput
     notes?: NoteUpdateManyWithoutUserNestedInput
+    roadmaps?: RoadmapUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSettingsInput = {
@@ -10388,6 +13649,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     desktops?: DesktopUncheckedUpdateManyWithoutUserNestedInput
     notes?: NoteUncheckedUpdateManyWithoutUserNestedInput
+    roadmaps?: RoadmapUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutDesktopsInput = {
@@ -10400,6 +13662,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     notes?: NoteCreateNestedManyWithoutUserInput
+    roadmaps?: RoadmapCreateNestedManyWithoutUserInput
     settings?: UserSettingsCreateNestedOneWithoutUserInput
   }
 
@@ -10414,6 +13677,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     notes?: NoteUncheckedCreateNestedManyWithoutUserInput
+    roadmaps?: RoadmapUncheckedCreateNestedManyWithoutUserInput
     settings?: UserSettingsUncheckedCreateNestedOneWithoutUserInput
   }
 
@@ -10453,6 +13717,35 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type RoadmapCreateWithoutDesktopInput = {
+    title: string
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutRoadmapsInput
+    steps?: RoadmapStepCreateNestedManyWithoutRoadmapInput
+  }
+
+  export type RoadmapUncheckedCreateWithoutDesktopInput = {
+    id?: number
+    title: string
+    description?: string | null
+    userId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    steps?: RoadmapStepUncheckedCreateNestedManyWithoutRoadmapInput
+  }
+
+  export type RoadmapCreateOrConnectWithoutDesktopInput = {
+    where: RoadmapWhereUniqueInput
+    create: XOR<RoadmapCreateWithoutDesktopInput, RoadmapUncheckedCreateWithoutDesktopInput>
+  }
+
+  export type RoadmapCreateManyDesktopInputEnvelope = {
+    data: RoadmapCreateManyDesktopInput | RoadmapCreateManyDesktopInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserUpsertWithoutDesktopsInput = {
     update: XOR<UserUpdateWithoutDesktopsInput, UserUncheckedUpdateWithoutDesktopsInput>
     create: XOR<UserCreateWithoutDesktopsInput, UserUncheckedCreateWithoutDesktopsInput>
@@ -10474,6 +13767,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     notes?: NoteUpdateManyWithoutUserNestedInput
+    roadmaps?: RoadmapUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUpdateOneWithoutUserNestedInput
   }
 
@@ -10488,6 +13782,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     notes?: NoteUncheckedUpdateManyWithoutUserNestedInput
+    roadmaps?: RoadmapUncheckedUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUncheckedUpdateOneWithoutUserNestedInput
   }
 
@@ -10507,12 +13802,29 @@ export namespace Prisma {
     data: XOR<NoteUpdateManyMutationInput, NoteUncheckedUpdateManyWithoutDesktopInput>
   }
 
+  export type RoadmapUpsertWithWhereUniqueWithoutDesktopInput = {
+    where: RoadmapWhereUniqueInput
+    update: XOR<RoadmapUpdateWithoutDesktopInput, RoadmapUncheckedUpdateWithoutDesktopInput>
+    create: XOR<RoadmapCreateWithoutDesktopInput, RoadmapUncheckedCreateWithoutDesktopInput>
+  }
+
+  export type RoadmapUpdateWithWhereUniqueWithoutDesktopInput = {
+    where: RoadmapWhereUniqueInput
+    data: XOR<RoadmapUpdateWithoutDesktopInput, RoadmapUncheckedUpdateWithoutDesktopInput>
+  }
+
+  export type RoadmapUpdateManyWithWhereWithoutDesktopInput = {
+    where: RoadmapScalarWhereInput
+    data: XOR<RoadmapUpdateManyMutationInput, RoadmapUncheckedUpdateManyWithoutDesktopInput>
+  }
+
   export type DesktopCreateWithoutNotesInput = {
     name: string
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutDesktopsInput
+    roadmaps?: RoadmapCreateNestedManyWithoutDesktopInput
   }
 
   export type DesktopUncheckedCreateWithoutNotesInput = {
@@ -10522,6 +13834,7 @@ export namespace Prisma {
     userId: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    roadmaps?: RoadmapUncheckedCreateNestedManyWithoutDesktopInput
   }
 
   export type DesktopCreateOrConnectWithoutNotesInput = {
@@ -10539,6 +13852,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     desktops?: DesktopCreateNestedManyWithoutUserInput
+    roadmaps?: RoadmapCreateNestedManyWithoutUserInput
     settings?: UserSettingsCreateNestedOneWithoutUserInput
   }
 
@@ -10553,6 +13867,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     desktops?: DesktopUncheckedCreateNestedManyWithoutUserInput
+    roadmaps?: RoadmapUncheckedCreateNestedManyWithoutUserInput
     settings?: UserSettingsUncheckedCreateNestedOneWithoutUserInput
   }
 
@@ -10597,6 +13912,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutDesktopsNestedInput
+    roadmaps?: RoadmapUpdateManyWithoutDesktopNestedInput
   }
 
   export type DesktopUncheckedUpdateWithoutNotesInput = {
@@ -10606,6 +13922,7 @@ export namespace Prisma {
     userId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    roadmaps?: RoadmapUncheckedUpdateManyWithoutDesktopNestedInput
   }
 
   export type UserUpsertWithoutNotesInput = {
@@ -10629,6 +13946,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     desktops?: DesktopUpdateManyWithoutUserNestedInput
+    roadmaps?: RoadmapUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUpdateOneWithoutUserNestedInput
   }
 
@@ -10643,6 +13961,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     desktops?: DesktopUncheckedUpdateManyWithoutUserNestedInput
+    roadmaps?: RoadmapUncheckedUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUncheckedUpdateOneWithoutUserNestedInput
   }
 
@@ -10810,6 +14129,247 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type DesktopCreateWithoutRoadmapsInput = {
+    name: string
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutDesktopsInput
+    notes?: NoteCreateNestedManyWithoutDesktopInput
+  }
+
+  export type DesktopUncheckedCreateWithoutRoadmapsInput = {
+    id?: number
+    name: string
+    description?: string | null
+    userId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    notes?: NoteUncheckedCreateNestedManyWithoutDesktopInput
+  }
+
+  export type DesktopCreateOrConnectWithoutRoadmapsInput = {
+    where: DesktopWhereUniqueInput
+    create: XOR<DesktopCreateWithoutRoadmapsInput, DesktopUncheckedCreateWithoutRoadmapsInput>
+  }
+
+  export type UserCreateWithoutRoadmapsInput = {
+    username: string
+    email: string
+    password?: string | null
+    auth0Id?: string | null
+    picture?: string | null
+    role?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    desktops?: DesktopCreateNestedManyWithoutUserInput
+    notes?: NoteCreateNestedManyWithoutUserInput
+    settings?: UserSettingsCreateNestedOneWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutRoadmapsInput = {
+    id?: number
+    username: string
+    email: string
+    password?: string | null
+    auth0Id?: string | null
+    picture?: string | null
+    role?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    desktops?: DesktopUncheckedCreateNestedManyWithoutUserInput
+    notes?: NoteUncheckedCreateNestedManyWithoutUserInput
+    settings?: UserSettingsUncheckedCreateNestedOneWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutRoadmapsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutRoadmapsInput, UserUncheckedCreateWithoutRoadmapsInput>
+  }
+
+  export type RoadmapStepCreateWithoutRoadmapInput = {
+    title: string
+    description?: string | null
+    order: number
+    isCompleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RoadmapStepUncheckedCreateWithoutRoadmapInput = {
+    id?: number
+    title: string
+    description?: string | null
+    order: number
+    isCompleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RoadmapStepCreateOrConnectWithoutRoadmapInput = {
+    where: RoadmapStepWhereUniqueInput
+    create: XOR<RoadmapStepCreateWithoutRoadmapInput, RoadmapStepUncheckedCreateWithoutRoadmapInput>
+  }
+
+  export type RoadmapStepCreateManyRoadmapInputEnvelope = {
+    data: RoadmapStepCreateManyRoadmapInput | RoadmapStepCreateManyRoadmapInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type DesktopUpsertWithoutRoadmapsInput = {
+    update: XOR<DesktopUpdateWithoutRoadmapsInput, DesktopUncheckedUpdateWithoutRoadmapsInput>
+    create: XOR<DesktopCreateWithoutRoadmapsInput, DesktopUncheckedCreateWithoutRoadmapsInput>
+    where?: DesktopWhereInput
+  }
+
+  export type DesktopUpdateToOneWithWhereWithoutRoadmapsInput = {
+    where?: DesktopWhereInput
+    data: XOR<DesktopUpdateWithoutRoadmapsInput, DesktopUncheckedUpdateWithoutRoadmapsInput>
+  }
+
+  export type DesktopUpdateWithoutRoadmapsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutDesktopsNestedInput
+    notes?: NoteUpdateManyWithoutDesktopNestedInput
+  }
+
+  export type DesktopUncheckedUpdateWithoutRoadmapsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    notes?: NoteUncheckedUpdateManyWithoutDesktopNestedInput
+  }
+
+  export type UserUpsertWithoutRoadmapsInput = {
+    update: XOR<UserUpdateWithoutRoadmapsInput, UserUncheckedUpdateWithoutRoadmapsInput>
+    create: XOR<UserCreateWithoutRoadmapsInput, UserUncheckedCreateWithoutRoadmapsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutRoadmapsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutRoadmapsInput, UserUncheckedUpdateWithoutRoadmapsInput>
+  }
+
+  export type UserUpdateWithoutRoadmapsInput = {
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    auth0Id?: NullableStringFieldUpdateOperationsInput | string | null
+    picture?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    desktops?: DesktopUpdateManyWithoutUserNestedInput
+    notes?: NoteUpdateManyWithoutUserNestedInput
+    settings?: UserSettingsUpdateOneWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutRoadmapsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    auth0Id?: NullableStringFieldUpdateOperationsInput | string | null
+    picture?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    desktops?: DesktopUncheckedUpdateManyWithoutUserNestedInput
+    notes?: NoteUncheckedUpdateManyWithoutUserNestedInput
+    settings?: UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+  }
+
+  export type RoadmapStepUpsertWithWhereUniqueWithoutRoadmapInput = {
+    where: RoadmapStepWhereUniqueInput
+    update: XOR<RoadmapStepUpdateWithoutRoadmapInput, RoadmapStepUncheckedUpdateWithoutRoadmapInput>
+    create: XOR<RoadmapStepCreateWithoutRoadmapInput, RoadmapStepUncheckedCreateWithoutRoadmapInput>
+  }
+
+  export type RoadmapStepUpdateWithWhereUniqueWithoutRoadmapInput = {
+    where: RoadmapStepWhereUniqueInput
+    data: XOR<RoadmapStepUpdateWithoutRoadmapInput, RoadmapStepUncheckedUpdateWithoutRoadmapInput>
+  }
+
+  export type RoadmapStepUpdateManyWithWhereWithoutRoadmapInput = {
+    where: RoadmapStepScalarWhereInput
+    data: XOR<RoadmapStepUpdateManyMutationInput, RoadmapStepUncheckedUpdateManyWithoutRoadmapInput>
+  }
+
+  export type RoadmapStepScalarWhereInput = {
+    AND?: RoadmapStepScalarWhereInput | RoadmapStepScalarWhereInput[]
+    OR?: RoadmapStepScalarWhereInput[]
+    NOT?: RoadmapStepScalarWhereInput | RoadmapStepScalarWhereInput[]
+    id?: IntFilter<"RoadmapStep"> | number
+    title?: StringFilter<"RoadmapStep"> | string
+    description?: StringNullableFilter<"RoadmapStep"> | string | null
+    order?: IntFilter<"RoadmapStep"> | number
+    isCompleted?: BoolFilter<"RoadmapStep"> | boolean
+    roadmapId?: IntFilter<"RoadmapStep"> | number
+    createdAt?: DateTimeFilter<"RoadmapStep"> | Date | string
+    updatedAt?: DateTimeFilter<"RoadmapStep"> | Date | string
+  }
+
+  export type RoadmapCreateWithoutStepsInput = {
+    title: string
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    desktop: DesktopCreateNestedOneWithoutRoadmapsInput
+    user: UserCreateNestedOneWithoutRoadmapsInput
+  }
+
+  export type RoadmapUncheckedCreateWithoutStepsInput = {
+    id?: number
+    title: string
+    description?: string | null
+    desktopId: number
+    userId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RoadmapCreateOrConnectWithoutStepsInput = {
+    where: RoadmapWhereUniqueInput
+    create: XOR<RoadmapCreateWithoutStepsInput, RoadmapUncheckedCreateWithoutStepsInput>
+  }
+
+  export type RoadmapUpsertWithoutStepsInput = {
+    update: XOR<RoadmapUpdateWithoutStepsInput, RoadmapUncheckedUpdateWithoutStepsInput>
+    create: XOR<RoadmapCreateWithoutStepsInput, RoadmapUncheckedCreateWithoutStepsInput>
+    where?: RoadmapWhereInput
+  }
+
+  export type RoadmapUpdateToOneWithWhereWithoutStepsInput = {
+    where?: RoadmapWhereInput
+    data: XOR<RoadmapUpdateWithoutStepsInput, RoadmapUncheckedUpdateWithoutStepsInput>
+  }
+
+  export type RoadmapUpdateWithoutStepsInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    desktop?: DesktopUpdateOneRequiredWithoutRoadmapsNestedInput
+    user?: UserUpdateOneRequiredWithoutRoadmapsNestedInput
+  }
+
+  export type RoadmapUncheckedUpdateWithoutStepsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    desktopId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type DesktopCreateManyUserInput = {
     id?: number
     name: string
@@ -10828,12 +14388,22 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type RoadmapCreateManyUserInput = {
+    id?: number
+    title: string
+    description?: string | null
+    desktopId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type DesktopUpdateWithoutUserInput = {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     notes?: NoteUpdateManyWithoutDesktopNestedInput
+    roadmaps?: RoadmapUpdateManyWithoutDesktopNestedInput
   }
 
   export type DesktopUncheckedUpdateWithoutUserInput = {
@@ -10843,6 +14413,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     notes?: NoteUncheckedUpdateManyWithoutDesktopNestedInput
+    roadmaps?: RoadmapUncheckedUpdateManyWithoutDesktopNestedInput
   }
 
   export type DesktopUncheckedUpdateManyWithoutUserInput = {
@@ -10884,11 +14455,48 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type RoadmapUpdateWithoutUserInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    desktop?: DesktopUpdateOneRequiredWithoutRoadmapsNestedInput
+    steps?: RoadmapStepUpdateManyWithoutRoadmapNestedInput
+  }
+
+  export type RoadmapUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    desktopId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    steps?: RoadmapStepUncheckedUpdateManyWithoutRoadmapNestedInput
+  }
+
+  export type RoadmapUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    desktopId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type NoteCreateManyDesktopInput = {
     id?: number
     title: string
     content: string
     isPinned?: boolean
+    userId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RoadmapCreateManyDesktopInput = {
+    id?: number
+    title: string
+    description?: string | null
     userId: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -10920,6 +14528,34 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     isPinned?: BoolFieldUpdateOperationsInput | boolean
+    userId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RoadmapUpdateWithoutDesktopInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutRoadmapsNestedInput
+    steps?: RoadmapStepUpdateManyWithoutRoadmapNestedInput
+  }
+
+  export type RoadmapUncheckedUpdateWithoutDesktopInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    steps?: RoadmapStepUncheckedUpdateManyWithoutRoadmapNestedInput
+  }
+
+  export type RoadmapUncheckedUpdateManyWithoutDesktopInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10961,6 +14597,45 @@ export namespace Prisma {
   export type NoteTagUncheckedUpdateManyWithoutTagInput = {
     id?: IntFieldUpdateOperationsInput | number
     noteId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type RoadmapStepCreateManyRoadmapInput = {
+    id?: number
+    title: string
+    description?: string | null
+    order: number
+    isCompleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RoadmapStepUpdateWithoutRoadmapInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    isCompleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RoadmapStepUncheckedUpdateWithoutRoadmapInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    isCompleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RoadmapStepUncheckedUpdateManyWithoutRoadmapInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    isCompleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
