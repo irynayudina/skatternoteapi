@@ -11,68 +11,97 @@ export class RoadmapController {
   constructor(private readonly roadmapService: RoadmapService) {}
 
   @Post()
-  create(
+  async create(
     @Body() createRoadmapDto: CreateRoadmapDto,
     @Query('userId') userId: string,
     @Query('desktopId') desktopId: string,
   ) {
-    return this.roadmapService.createRoadmap(
+    const roadmap = await this.roadmapService.createRoadmap(
       createRoadmapDto,
       parseInt(userId),
       parseInt(desktopId),
     );
+    return {
+      message: 'Roadmap created successfully',
+      data: roadmap
+    };
   }
 
   @Get()
-  findAll(@Query('userId') userId: string, @Query('desktopId') desktopId?: string) {
-    return this.roadmapService.getRoadmaps(
+  async findAll(@Query('userId') userId: string, @Query('desktopId') desktopId?: string) {
+    const roadmaps = await this.roadmapService.getRoadmaps(
       parseInt(userId),
       desktopId ? parseInt(desktopId) : undefined,
     );
+    return {
+      message: 'Roadmaps fetched successfully',
+      data: roadmaps
+    };
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string, @Query('userId') userId: string) {
-    return this.roadmapService.getRoadmap(parseInt(id), parseInt(userId));
+  async findOne(@Param('id') id: string, @Query('userId') userId: string) {
+    const roadmap = await this.roadmapService.getRoadmap(parseInt(id), parseInt(userId));
+    return {
+      message: 'Roadmap fetched successfully',
+      data: roadmap
+    };
   }
 
   @Patch(':id')
-  update(
+  async update(
     @Param('id') id: string,
     @Body() updateRoadmapDto: UpdateRoadmapDto,
     @Query('userId') userId: string,
   ) {
-    return this.roadmapService.updateRoadmap(parseInt(id), updateRoadmapDto, parseInt(userId));
+    const roadmap = await this.roadmapService.updateRoadmap(parseInt(id), updateRoadmapDto, parseInt(userId));
+    return {
+      message: 'Roadmap updated successfully',
+      data: roadmap
+    };
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string, @Query('userId') userId: string) {
-    return this.roadmapService.deleteRoadmap(parseInt(id), parseInt(userId));
+  async remove(@Param('id') id: string, @Query('userId') userId: string) {
+    const result = await this.roadmapService.deleteRoadmap(parseInt(id), parseInt(userId));
+    return result;
   }
 
   @Patch('step/:stepId')
-  updateStep(
+  async updateStep(
     @Param('stepId') stepId: string,
     @Body() updateStepDto: UpdateRoadmapStepDto,
     @Query('userId') userId: string,
   ) {
-    return this.roadmapService.updateRoadmapStep(parseInt(stepId), updateStepDto, parseInt(userId));
+    const roadmap = await this.roadmapService.updateRoadmapStep(parseInt(stepId), updateStepDto, parseInt(userId));
+    return {
+      message: 'Roadmap step updated successfully',
+      data: roadmap
+    };
   }
 
   @Patch('step/:stepId/toggle')
-  toggleStepCompletion(
+  async toggleStepCompletion(
     @Param('stepId') stepId: string,
     @Query('userId') userId: string,
   ) {
-    return this.roadmapService.toggleStepCompletion(parseInt(stepId), parseInt(userId));
+    const roadmap = await this.roadmapService.toggleStepCompletion(parseInt(stepId), parseInt(userId));
+    return {
+      message: 'Step completion toggled successfully',
+      data: roadmap
+    };
   }
 
   @Patch(':id/reorder')
-  reorderSteps(
+  async reorderSteps(
     @Param('id') id: string,
     @Body() body: { stepIds: number[] },
     @Query('userId') userId: string,
   ) {
-    return this.roadmapService.reorderSteps(parseInt(id), body.stepIds, parseInt(userId));
+    const roadmap = await this.roadmapService.reorderSteps(parseInt(id), body.stepIds, parseInt(userId));
+    return {
+      message: 'Steps reordered successfully',
+      data: roadmap
+    };
   }
 } 
