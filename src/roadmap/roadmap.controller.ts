@@ -61,6 +61,19 @@ export class RoadmapController {
     };
   }
 
+  @Patch(':id/transfer')
+  async transferRoadmap(
+    @Param('id') id: string,
+    @Body() body: { targetDesktopId: number },
+    @Query('userId') userId: string,
+  ) {
+    const roadmap = await this.roadmapService.transferRoadmap(parseInt(id), body.targetDesktopId, parseInt(userId));
+    return {
+      message: 'Roadmap transferred successfully',
+      data: roadmap
+    };
+  }
+
   @Delete(':id')
   async remove(@Param('id') id: string, @Query('userId') userId: string) {
     const result = await this.roadmapService.deleteRoadmap(parseInt(id), parseInt(userId));

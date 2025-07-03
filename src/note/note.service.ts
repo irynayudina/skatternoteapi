@@ -261,7 +261,7 @@ export class NoteService {
         tags: {
           some: {
             tag: {
-              name: { equals: tagName, mode: 'insensitive' }
+              name: { contains: tagName, mode: 'insensitive' }
             }
           }
         }
@@ -284,5 +284,59 @@ export class NoteService {
         { updatedAt: 'desc' }
       ]
     });
+  }
+
+  async transferNote(id: number, targetDesktopId: number, userId: number) {
+    // Check if note exists and belongs to user
+    const existingNote = await this.prisma.note.findFirst({
+      where: {
+        id,
+        userId
+      }
+    });
+
+    if (!existingNote) {
+      throw new NotFoundException('Note not found');
+    }
+
+    // Check if target desktop exists and belongs to user
+    const targetDesktop = await this.prisma.desktop.findFirst({
+      where: {
+        id: targetDesktopId,
+        userId
+      }
+    });
+
+    if (!targetDesktop) {
+      throw new NotFoundException('Target desktop not found');
+    }
+
+    // Don't transfer if already in the target desktop
+    if (existingNote.desktopId === targetDesktopId) {
+      throw new ForbiddenException('Note is already in the target desktop');
+    }
+
+    // Transfer the note
+    const note = await this.prisma.note.update({
+      where: { id },
+      data: {
+        desktopId: targetDesktopId
+      },
+      include: {
+        tags: {
+          include: {
+            tag: true
+          }
+        },
+        desktop: {
+          select: {
+            id: true,
+            name: true
+          }
+        }
+      }
+    });
+
+    return note;
   }
 }

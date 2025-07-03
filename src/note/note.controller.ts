@@ -83,6 +83,19 @@ export class NoteController {
     };
   }
 
+  @Patch(':id/transfer')
+  async transferNote(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() body: { targetDesktopId: number },
+    @Query('userId', ParseIntPipe) userId: number
+  ) {
+    const note = await this.noteService.transferNote(id, body.targetDesktopId, userId);
+    return {
+      message: 'Note transferred successfully',
+      data: note
+    };
+  }
+
   @Delete(':id')
   async remove(@Param('id', ParseIntPipe) id: number, @Query('userId', ParseIntPipe) userId: number) {
     const result = await this.noteService.remove(id, userId);

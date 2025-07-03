@@ -212,4 +212,50 @@ export class RoadmapService {
       },
     });
   }
+
+  async transferRoadmap(roadmapId: number, targetDesktopId: number, userId: number) {
+    // Check if roadmap exists and belongs to user
+    const existingRoadmap = await this.prisma.roadmap.findFirst({
+      where: {
+        id: roadmapId,
+        userId
+      }
+    });
+
+    if (!existingRoadmap) {
+      throw new NotFoundException('Roadmap not found');
+    }
+
+    // Check if target desktop exists and belongs to user
+    const targetDesktop = await this.prisma.desktop.findFirst({
+      where: {
+        id: targetDesktopId,
+        userId
+      }
+    });
+
+    if (!targetDesktop) {
+      throw new NotFoundException('Target desktop not found');
+    }
+
+    // Don't transfer if already in the target desktop
+    if (existingRoadmap.desktopId === targetDesktopId) {
+      throw new ForbiddenException('Roadmap is already in the target desktop');
+    }
+
+    // Transfer the roadmap
+    const roadmap = await this.prisma.roadmap.update({
+      where: { id: roadmapId },
+      data: {
+        desktopId: targetDesktopId
+      },
+      include: {
+        steps: {
+          orderBy: { order: 'asc' },
+        },
+      },
+    });
+
+    return roadmap;
+  }
 } 
