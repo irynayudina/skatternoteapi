@@ -1,0 +1,45 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type TagCount {
+  notes: Int!
+}
+
+type Tag {
+  id: Int!
+  name: String!
+  color: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  _count: TagCount
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  tags: [Tag!]!
+  tag(id: Int!): Tag!
+  popularTags(limit: Int): [Tag!]!
+  tagsByUser(userId: Int!): [Tag!]!
+  searchTags(query: String!): [Tag!]!
+}
+
+type Mutation {
+  createTag(createTagInput: CreateTagInput!): Tag!
+  updateTag(id: Int!, updateTagInput: UpdateTagInput!): Tag!
+  removeTag(id: Int!): String!
+}
+
+input CreateTagInput {
+  name: String!
+  color: String
+}
+
+input UpdateTagInput {
+  name: String
+  color: String
+}
