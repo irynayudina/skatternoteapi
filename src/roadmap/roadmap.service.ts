@@ -3,12 +3,14 @@ import { PrismaService } from '../prisma/prisma.service';
 import { CreateRoadmapDto } from './dto/create-roadmap.dto';
 import { UpdateRoadmapDto } from './dto/update-roadmap.dto';
 import { UpdateRoadmapStepDto } from './dto/update-roadmap-step.dto';
+import { CreateRoadmapInput } from './dto/create-roadmap.input';
+import { UpdateRoadmapInput } from './dto/update-roadmap.input';
 
 @Injectable()
 export class RoadmapService {
   constructor(private prisma: PrismaService) {}
 
-  async createRoadmap(createRoadmapDto: CreateRoadmapDto, userId: number, desktopId: number) {
+  async createRoadmap(createRoadmapDto: CreateRoadmapDto | CreateRoadmapInput, userId: number, desktopId: number) {
     const { steps, ...roadmapData } = createRoadmapDto;
 
     // Verify desktop belongs to user
@@ -74,7 +76,7 @@ export class RoadmapService {
     return roadmap;
   }
 
-  async updateRoadmap(roadmapId: number, updateRoadmapDto: UpdateRoadmapDto, userId: number) {
+  async updateRoadmap(roadmapId: number, updateRoadmapDto: UpdateRoadmapDto | UpdateRoadmapInput, userId: number) {
     const roadmap = await this.prisma.roadmap.findFirst({
       where: { id: roadmapId, userId },
     });
