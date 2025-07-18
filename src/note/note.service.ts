@@ -2,12 +2,14 @@ import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/commo
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateNoteDto } from './dto/create-note.dto';
 import { UpdateNoteDto } from './dto/update-note.dto';
+import { CreateNoteInput } from './dto/create-note.input';
+import { UpdateNoteInput } from './dto/update-note.input';
 
 @Injectable()
 export class NoteService {
   constructor(private prisma: PrismaService) {}
 
-  async create(createNoteDto: CreateNoteDto, userId: number) {
+  async create(createNoteDto: CreateNoteDto | CreateNoteInput, userId: number) {
     const { tags, ...noteData } = createNoteDto;
 
     // Verify desktop belongs to user
@@ -123,7 +125,7 @@ export class NoteService {
     return note;
   }
 
-  async update(id: number, updateNoteDto: UpdateNoteDto, userId: number) {
+  async update(id: number, updateNoteDto: UpdateNoteDto | UpdateNoteInput, userId: number) {
     // Check if note exists and belongs to user
     const existingNote = await this.prisma.note.findFirst({
       where: {
