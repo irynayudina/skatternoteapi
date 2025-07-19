@@ -1,27 +1,10 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { Note } from '../../note/entities/note.entity';
 
 @ObjectType()
 export class DesktopCount {
   @Field(() => Int)
   notes: number;
-}
-
-@ObjectType()
-export class Note {
-  @Field(() => Int)
-  id: number;
-
-  @Field()
-  title: string;
-
-  @Field()
-  isPinned: boolean;
-
-  @Field()
-  createdAt: Date;
-
-  @Field()
-  updatedAt: Date;
 }
 
 @ObjectType()

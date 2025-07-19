@@ -1,14 +1,6 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { Tag } from '../../tag/entities/tag.entity';
-
-@ObjectType()
-export class Desktop {
-  @Field(() => Int)
-  id: number;
-
-  @Field()
-  name: string;
-}
+import { Desktop } from '../../desktop/entities/desktop.entity';
 
 @ObjectType()
 export class NoteTag {

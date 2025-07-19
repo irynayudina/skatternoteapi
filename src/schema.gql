@@ -20,18 +20,165 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type NoteTag {
+  id: Int!
+  tag: Tag!
+}
+
+type Note {
+  id: Int!
+  title: String!
+  content: String!
+  isPinned: Boolean!
+  desktopId: Int!
+  userId: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  desktop: Desktop
+  tags: [NoteTag!]
+}
+
+type DesktopCount {
+  notes: Int!
+}
+
+type Desktop {
+  id: Int!
+  name: String!
+  description: String
+  userId: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  notes: [Note!]
+  _count: DesktopCount
+}
+
+type User {
+  id: Int!
+  username: String!
+  email: String!
+  picture: String
+  role: String!
+  createdAt: DateTime!
+  auth0Id: String
+  desktops: [Desktop!]
+}
+
+type DesktopStats {
+  totalDesktops: Int!
+  totalNotes: Int!
+  desktops: [Desktop!]!
+}
+
+type UserSettings {
+  id: Int!
+  userId: Int!
+  preferredTheme: String!
+  desktopBackground: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type RoadmapStep {
+  id: Int!
+  title: String!
+  description: String
+  order: Int!
+  isCompleted: Boolean!
+  roadmapId: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Roadmap {
+  id: Int!
+  title: String!
+  description: String
+  desktopId: Int!
+  userId: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  steps: [RoadmapStep!]
+}
+
 type Query {
+  users: [User!]!
+  user(id: Int!): User!
+  userByAuth0Id(auth0Id: String!): User!
+  userByEmail(email: String!): User!
+  userByUsername(username: String!): User!
+  notes(userId: Int!, desktopId: Int, search: String): [Note!]!
+  note(id: Int!, userId: Int!): Note!
+  searchNotes(userId: Int!, query: String!): [Note!]!
+  notesByTag(userId: Int!, tagName: String!): [Note!]!
   tags: [Tag!]!
   tag(id: Int!): Tag!
   popularTags(limit: Int): [Tag!]!
   tagsByUser(userId: Int!): [Tag!]!
   searchTags(query: String!): [Tag!]!
+  desktops(userId: Int!): [Desktop!]!
+  desktop(desktopId: Int!, userId: Int!): Desktop!
+  desktopStats(userId: Int!): DesktopStats!
+  userSettings(userId: Int!): UserSettings!
+  preferredTheme(userId: Int!): String!
+  desktopBackground(userId: Int!): String
+  roadmaps(userId: Int!, desktopId: Int): [Roadmap!]!
+  roadmap(roadmapId: Int!, userId: Int!): Roadmap!
+  userProfile(auth0Id: String!): User!
 }
 
 type Mutation {
+  register(createUserInput: CreateUserInput!): User!
+  login(loginUserInput: LoginUserInput!): User!
+  removeUser(id: Int!): String!
+  createNote(createNoteInput: CreateNoteInput!, userId: Int!): Note!
+  updateNote(id: Int!, updateNoteInput: UpdateNoteInput!, userId: Int!): Note!
+  toggleNotePin(id: Int!, userId: Int!): Note!
+  transferNote(id: Int!, targetDesktopId: Int!, userId: Int!): Note!
+  removeNote(id: Int!, userId: Int!): String!
   createTag(createTagInput: CreateTagInput!): Tag!
   updateTag(id: Int!, updateTagInput: UpdateTagInput!): Tag!
   removeTag(id: Int!): String!
+  createDesktop(createDesktopInput: CreateDesktopInput!, userId: Int!): Desktop!
+  updateDesktop(desktopId: Int!, updateDesktopInput: UpdateDesktopInput!, userId: Int!): Desktop!
+  deleteDesktop(desktopId: Int!, userId: Int!): String!
+  updateUserSettings(userId: Int!, updateSettingsInput: UpdateSettingsInput!): UserSettings!
+  createRoadmap(createRoadmapInput: CreateRoadmapInput!, userId: Int!): Roadmap!
+  updateRoadmap(roadmapId: Int!, updateRoadmapInput: UpdateRoadmapInput!, userId: Int!): Roadmap!
+  updateRoadmapStep(stepId: Int!, updateStepDto: UpdateRoadmapStepDto!, userId: Int!): Roadmap!
+  toggleStepCompletion(stepId: Int!, userId: Int!): Roadmap!
+  reorderSteps(roadmapId: Int!, stepIds: [Int!]!, userId: Int!): Roadmap!
+  transferRoadmap(roadmapId: Int!, targetDesktopId: Int!, userId: Int!): Roadmap!
+  deleteRoadmap(roadmapId: Int!, userId: Int!): String!
+  createOrUpdateUser(auth0User: Auth0UserInput!): User!
+  createUserWithCustomUsername(createUserDto: CreateUserWithUsernameInput!): User!
+}
+
+input CreateUserInput {
+  username: String!
+  email: String!
+  password: String!
+  role: String
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+input CreateNoteInput {
+  title: String!
+  content: String!
+  desktopId: Int!
+  tags: [String!]
+  isPinned: Boolean
+}
+
+input UpdateNoteInput {
+  title: String
+  content: String
+  tags: [String!]
+  isPinned: Boolean
 }
 
 input CreateTagInput {
@@ -42,4 +189,73 @@ input CreateTagInput {
 input UpdateTagInput {
   name: String
   color: String
+}
+
+input CreateDesktopInput {
+  name: String!
+  description: String
+}
+
+input UpdateDesktopInput {
+  name: String
+  description: String
+}
+
+input UpdateSettingsInput {
+  preferredTheme: String
+  desktopBackground: String
+}
+
+input CreateRoadmapInput {
+  title: String!
+  description: String
+  desktopId: Int!
+  steps: [CreateRoadmapStepInput!]!
+}
+
+input CreateRoadmapStepInput {
+  title: String!
+  description: String
+  order: Int
+  isCompleted: Boolean
+}
+
+input UpdateRoadmapInput {
+  title: String
+  description: String
+  steps: [UpdateRoadmapStepInput!]
+}
+
+input UpdateRoadmapStepInput {
+  title: String
+  description: String
+  order: Int
+  isCompleted: Boolean
+}
+
+input UpdateRoadmapStepDto {
+  title: String
+  description: String
+  order: Int
+  isCompleted: Boolean
+}
+
+input Auth0UserInput {
+  sub: String!
+  email: String!
+  email_verified: Boolean!
+  name: String
+  nickname: String
+  picture: String
+  updated_at: String!
+}
+
+input CreateUserWithUsernameInput {
+  sub: String!
+  email: String!
+  username: String!
+  name: String
+  nickname: String
+  picture: String
+  updated_at: String
 }
