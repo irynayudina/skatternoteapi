@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { User } from '../user/entities/user.entity';
 import { Auth0UserInput } from './entities/auth0-user.entity';
 import { CreateUserWithUsernameInput } from './dto/create-user-with-username.input';
+import { NotFoundException } from '@nestjs/common';
 
 @Resolver(() => User)
 export class AuthResolver {
@@ -18,8 +19,8 @@ export class AuthResolver {
     return this.authService.createUserWithCustomUsername(createUserDto);
   }
 
-  @Query(() => User, { name: 'userProfile' })
+  @Query(() => User, { name: 'userProfile', nullable: true })
   async getUserByAuth0Id(@Args('auth0Id') auth0Id: string) {
-    return this.authService.getUserByAuth0Id(auth0Id);
+    return await this.authService.getUserByAuth0Id(auth0Id);
   }
 } 

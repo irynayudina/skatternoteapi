@@ -124,7 +124,7 @@ type Query {
   desktopBackground(userId: Int!): String
   roadmaps(userId: Int!, desktopId: Int): [Roadmap!]!
   roadmap(roadmapId: Int!, userId: Int!): Roadmap!
-  userProfile(auth0Id: String!): User!
+  userProfile(auth0Id: String!): User
 }
 
 type Mutation {
