@@ -148,3 +148,20 @@ model RoadmapStep {
 
   @@map("roadmap_steps")
 }
+
+// Utility model for useful resources displayed on home board
+model Utility {
+  id          Int      @id @default(autoincrement())
+  name        String   // Required: Display name of the utility
+  link        String   // Required: URL to the resource
+  icon        String?  // Optional: Emoji or icon character
+  picture     String?  // Optional: URL to an image/icon
+  image       String?  // Optional: Alternative field for image URL
+  description String?  // Optional: Brief description
+  orderIndex  Int      @default(0) // Order for display
+  isActive    Boolean  @default(true) // Whether the utility is active
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("utilities")
+}

@@ -19,6 +19,7 @@ import { TagModule } from './tag/tag.module';
 import { DesktopModule } from './desktop/desktop.module';
 import { SettingsModule } from './settings/settings.module';
 import { RoadmapModule } from './roadmap/roadmap.module';
+import { UtilitiesModule } from './utilities/utilities.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { AuthModule } from './auth/auth.module';
 import { GraphQLModule } from '@nestjs/graphql';
@@ -42,6 +43,7 @@ import { join } from 'path';
     DesktopModule,
     SettingsModule,
     RoadmapModule,
+    UtilitiesModule,
     AuthModule
   ],
   controllers: [AppController, UserController, NoteController, DesktopController, TagController, SettingsController, RoadmapController],
