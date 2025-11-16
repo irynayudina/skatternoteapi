@@ -3,7 +3,6 @@ import { UtilitiesService } from './utilities.service';
 import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('utilities')
-@UseGuards(AuthGuard)
 export class UtilitiesController {
   constructor(private readonly utilitiesService: UtilitiesService) {}
 
