@@ -166,12 +166,10 @@ export class RoadmapService {
         roadmap: { userId },
       },
     });
-
     if (!step) {
       throw new NotFoundException('Roadmap step not found');
     }
-
-    return this.prisma.roadmapStep.update({
+    const updatedStep = await this.prisma.roadmapStep.update({
       where: { id: stepId },
       data: { isCompleted: !step.isCompleted },
       include: {
@@ -184,6 +182,7 @@ export class RoadmapService {
         },
       },
     });
+    return updatedStep.roadmap;
   }
 
   async reorderSteps(roadmapId: number, stepIds: number[], userId: number) {

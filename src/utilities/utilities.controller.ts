@@ -1,6 +1,5 @@
-import { Controller, Get, UseGuards, HttpException, HttpStatus } from '@nestjs/common';
+import { Controller, Get, HttpException, HttpStatus } from '@nestjs/common';
 import { UtilitiesService } from './utilities.service';
-import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('utilities')
 export class UtilitiesController {
